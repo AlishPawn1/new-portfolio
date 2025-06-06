@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Initialize EmailJS with your user ID
   // Replace 'YOUR_USER_ID' with your actual EmailJS user ID
-  emailjs.init('alishpawn00@gmail.com');
+  emailjs.init('LuBIUVVaa4wX-Quox');
   
   const contactForm = document.getElementById('contact-form');
   const submitButton = contactForm.querySelector('button[type="submit"]');
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Send email using EmailJS
     // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual EmailJS service and template IDs
-    emailjs.send('service_ybmipbr', 'template_p573m6t', templateParams)
+    emailjs.send('service_ybmipbr', 'template_b073gkl', templateParams)
       .then(function(response) {
         console.log('SUCCESS!', response.status, response.text);
         
