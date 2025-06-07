@@ -4,236 +4,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alish Pawn | Web Developer</title>
-    <meta name="description" content="Professional portfolio of Alish Pawn, a web developer based in Bhaktapur, Nepal.">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Alish Pawn - Web Developer Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="css/all.css">
+    <link rel="stylesheet" type="text/css" href="css/splide.min.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="image/image.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 
 <body>
-    <!-- Theme Toggle Button -->
-    <button id="theme-toggle" aria-label="Toggle dark/light mode">
-        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"></circle>
-            <path
-                d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4">
-            </path>
-        </svg>
-        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
-        </svg>
-    </button>
-
-    <!-- Header -->
-    <header id="header">
-        <div class="container">
-            <a href="#home" class="logo">
-                <span>Alish</span>Pawn
-            </a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <button class="menu-toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">Alish Pawn</a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
                 </button>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 data-aos="fade-up">
-                    Hi, I'm <span class="highlight">Alish Pawn</span>
-                    <span class="position">Web Developer</span>
-                </h1>
-                <p data-aos="fade-up" data-aos-delay="100">
-                    I create engaging, responsive and user-friendly websites with modern technologies.
-                    Let's build something amazing together.
-                </p>
-                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="200">
-                    <a href="#contact" class="btn primary">Hire Me</a>
-                    <a href="#projects" class="btn secondary">My Work</a>
-                </div>
-                <div class="social-links" data-aos="fade-up" data-aos-delay="300">
-                    <a href="https://github.com/alishpawn1" target="_blank" rel="noopener noreferrer"
-                        aria-label="GitHub">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
-                            </path>
-                            <path d="M9 18c-4.51 2-5-2-7-2"></path>
-                        </svg>
-                    </a>
-                    <a href="https://www.facebook.com/alishpawn1" target="_blank" rel="noopener noreferrer"
-                        aria-label="Facebook">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                        </svg>
-                    </a>
-                    <a href="https://www.instagram.com/alishpawn/" target="_blank" rel="noopener noreferrer"
-                        aria-label="Instagram">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-                        </svg>
-                    </a>
-                    <a href="mailto:alishpawn00@gmail.com" aria-label="Email">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                        </svg>
-                    </a>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
                 </div>
             </div>
         </div>
-        <a href="#about" class="scroll-down" aria-label="Scroll down">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 5v14M5 12l7 7 7-7"></path>
-            </svg>
-        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Hi, I'm <span class="highlight">Alish Pawn</span>
+                </h1>
+                <p class="hero-subtitle">Frontend Web Developer & BCA Student</p>
+                <p class="hero-description">
+                    Passionate about creating beautiful, responsive web applications using modern technologies like
+                    React, JavaScript, and more.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    <a href="#" class="btn btn-outline" id="download-cv">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/AlishPawn1" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/alish-pawn-06a10a346/" target="_blank"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="https://www.facebook.com/alishpawn1" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/alishpawn/" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-card">
+                    <div class="profile-img">
+                        <img src="image/it's me.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>About Me</h2>
-                <div class="section-divider"></div>
-            </div>
-
+            <h2 class="section-title">About Me</h2>
             <div class="about-content">
-                <div class="about-text" data-aos="fade-right">
-                    <h3>I'm <span class="highlight">Alish Pawn</span>, a Web Developer</h3>
+                <div class="about-text">
                     <p>
-                        I'm a passionate web developer with over a year of professional experience,
-                        dedicated to creating engaging and functional web applications. My journey in
-                        web development began with a fascination for turning creative ideas into
-                        interactive digital experiences.
+                        I'm a passionate web developer currently pursuing my Bachelor's in Computer Application (BCA)
+                        at Kathmandu College of Technology, affiliated with Tribhuvan University. I'm in my 3rd year,
+                        6th semester,
+                        and have been developing my skills in frontend web development.
                     </p>
                     <p>
-                        I specialize in front-end development with expertise in HTML, CSS, JavaScript,
-                        and modern frameworks like React. I'm also proficient in responsive design principles,
-                        ensuring that websites look and function perfectly across all devices.
+                        My journey in web development started with HTML, CSS, and JavaScript, and has evolved to include
+                        modern frameworks like React. I enjoy creating user-friendly, responsive websites and have
+                        experience
+                        with various tools and platforms including WordPress, Shopify, and DBeaver.
                     </p>
-                    <p>
-                        When I'm not coding, I enjoy exploring new technologies, contributing to open-source
-                        projects, and continuously improving my skills through online courses and community involvement.
-                    </p>
-
-                    <a href="#contact" class="btn primary">Get In Touch</a>
+                    <div class="personal-info">
+                        <div class="info-item">
+                            <i class="fas fa-birthday-cake"></i>
+                            <span>July 11, 2003</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bhaktapur, Nepal</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+977 9742828051</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>alishpawn00@gmail.com</span>
+                        </div>
+                    </div>
                 </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <h3>6+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>3+</h3>
+                        <p>Years Learning</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>10+</h3>
+                        <p>Technologies Used</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="about-info" data-aos="fade-left">
-                    <h3>Personal Information</h3>
-
-                    <div class="info-items">
-                        <div class="info-item">
-                            <div class="info-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                    <line x1="16" x2="16" y1="2" y2="6"></line>
-                                    <line x1="8" x2="8" y1="2" y2="6"></line>
-                                    <line x1="3" x2="21" y1="10" y2="10"></line>
-                                </svg>
-                            </div>
+    <!-- CV Section -->
+    <section id="cv" class="cv-section">
+        <div class="container">
+            <h2 class="section-title">Curriculum Vitae</h2>
+            <div class="cv-content">
+                <div class="cv-preview">
+                    <div class="cv-card">
+                        <div class="cv-header">
+                            <i class="fas fa-file-pdf"></i>
+                            <h3>My Resume</h3>
+                        </div>
+                        <div class="cv-details">
+                            <p>Download my complete CV to learn more about my experience, education, and skills.</p>
+                            <ul class="cv-highlights">
+                                <li><i class="fas fa-check"></i> Complete work experience</li>
+                                <li><i class="fas fa-check"></i> Educational background</li>
+                                <li><i class="fas fa-check"></i> Technical skills & certifications</li>
+                                <li><i class="fas fa-check"></i> Project portfolio</li>
+                                <li><i class="fas fa-check"></i> Contact information</li>
+                            </ul>
+                        </div>
+                        <div class="cv-actions">
+                            <button class="btn btn-primary" id="download-cv-main">
+                                <i class="fas fa-download"></i> Download PDF
+                            </button>
+                            <button class="btn btn-outline" id="view-cv">
+                                <i class="fas fa-eye"></i> Preview CV
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="cv-info">
+                    <h3>Why Download My CV?</h3>
+                    <div class="cv-benefits">
+                        <div class="benefit-item">
+                            <i class="fas fa-user-graduate"></i>
                             <div>
-                                <span class="info-label">Date of Birth</span>
-                                <span class="info-value">July 11, 2003</span>
+                                <h4>Educational Journey</h4>
+                                <p>Detailed information about my BCA studies and academic achievements.</p>
                             </div>
                         </div>
-                        <div class="info-item">
-                            <div class="info-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                                    <circle cx="12" cy="10" r="3"></circle>
-                                </svg>
-                            </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-code"></i>
                             <div>
-                                <span class="info-label">Address</span>
-                                <span class="info-value">Bhaktapur, Nepal</span>
+                                <h4>Technical Expertise</h4>
+                                <p>Comprehensive list of programming languages, frameworks, and tools I work with.</p>
                             </div>
                         </div>
-                        <div class="info-item">
-                            <div class="info-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                                    </path>
-                                </svg>
-                            </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-project-diagram"></i>
                             <div>
-                                <span class="info-label">Phone</span>
-                                <span class="info-value">+977 9742828051</span>
+                                <h4>Project Experience</h4>
+                                <p>Detailed descriptions of projects I've worked on with technologies used.</p>
                             </div>
                         </div>
-                        <div class="info-item">
-                            <div class="info-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                                </svg>
-                            </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-award"></i>
                             <div>
-                                <span class="info-label">Email</span>
-                                <span class="info-value">alishpawn00@gmail.com</span>
+                                <h4>Achievements</h4>
+                                <p>Certifications, awards, and recognition I've received in my journey.</p>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <div class="language-section">
-                        <h3>Languages</h3>
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
 
-                        <div class="languages">
-                            <div class="language-item">
-                                <div class="language-info">
-                                    <span>English</span>
-                                    <span>90%</span>
+            <!-- Splide Slider Wrapper -->
+            <div class="splide education-slider">
+                <div class="splide__track">
+                    <ul class="splide__list">
+
+                        <!-- SEE Slide -->
+                        <li class="splide__slide">
+                            <div class="education-item">
+                                <div class="education-icon">
+                                    <i class="fas fa-graduation-cap"></i>
                                 </div>
-                                <div class="progress-bar">
-                                    <div class="progress" style="width: 90%"></div>
+                                <div class="education-details">
+                                    <h3>Secondary Education Examination (SEE)</h3>
+                                    <h4>Sooryodaya Secondary School</h4>
+                                    <p class="education-meta">Completed in 2019 A.D | GPA: 3.20</p>
+                                    <p class="education-description">Completed foundational education with a strong emphasis on core subjects such as English, Mathematics, Science, and Social Studies. Developed discipline, academic consistency, and a base for future academic pursuits.</p>
                                 </div>
                             </div>
-                            <div class="language-item">
-                                <div class="language-info">
-                                    <span>Nepali</span>
-                                    <span>100%</span>
+                        </li>
+
+                        <!-- +2 Slide -->
+                        <li class="splide__slide">
+                            <div class="education-item">
+                                <div class="education-icon">
+                                    <i class="fas fa-university"></i>
                                 </div>
-                                <div class="progress-bar">
-                                    <div class="progress" style="width: 100%"></div>
+                                <div class="education-details">
+                                    <h3>+2 in Business Management</h3>
+                                    <h4>Bagiswori Secondary School</h4>
+                                    <p class="education-meta">2019 – 2021 | GPA: 2.48</p>
+                                    <p class="education-description">Gained fundamental knowledge in business practices, economics, accountancy, and management principles. This program helped develop analytical thinking and an understanding of organizational operations.</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </li>
+
+                        <!-- Bachelor Slide -->
+                        <li class="splide__slide">
+                            <div class="education-item">
+                                <div class="education-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="education-details">
+                                    <h3>Bachelor in Computer Application (BCA)</h3>
+                                    <h4>Kathmandu College of Technology</h4>
+                                    <p class="education-meta">Affiliated with Tribhuvan University | 3rd Year 6th Semester</p>
+                                    <p class="education-description">Currently pursuing an undergraduate degree focused on computer science, software development, database systems, and web technologies. Building strong theoretical foundations and practical skills in programming and IT solutions.</p> 
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
                 </div>
             </div>
         </div>
@@ -242,120 +263,70 @@
     <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>My Skills</h2>
-                <div class="section-divider"></div>
-                <p data-aos="fade-up" data-aos-delay="100">
-                    I've worked with a variety of technologies to deliver high-quality web solutions.
-                    Here are the key skills I've developed over my career.
-                </p>
-            </div>
-
-            <div class="skills-filter" data-aos="fade-up">
-                <button class="filter-btn active" data-filter="all">All Skills</button>
-                <button class="filter-btn" data-filter="frontend">Frontend</button>
-                <button class="filter-btn" data-filter="backend">Backend</button>
-                <button class="filter-btn" data-filter="tools">Tools</button>
-            </div>
-
-            <div class="skills-grid">
-                <!-- Frontend Skills -->
-                <div class="skill-card" data-category="frontend" data-aos="fade-up">
-                    <h3>HTML5</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 95%"></div>
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="skills-content">
+                <div class="skill-category">
+                    <h3>Frontend Development</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-js-square"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-react"></i>
+                            <span>React</span>
+                        </div>
                     </div>
-                    <span class="skill-level">95%</span>
                 </div>
-
-                <div class="skill-card" data-category="frontend" data-aos="fade-up" data-aos-delay="50">
-                    <h3>CSS3</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 90%"></div>
+                <div class="skill-category">
+                    <h3>Backend & Database</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-php"></i>
+                            <span>PHP</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-python"></i>
+                            <span>Python (Django)</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>DBeaver</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-node-js"></i>
+                            <span>Node.js</span>
+                        </div>
                     </div>
-                    <span class="skill-level">90%</span>
                 </div>
-
-                <div class="skill-card" data-category="frontend" data-aos="fade-up" data-aos-delay="100">
-                    <h3>JavaScript</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 85%"></div>
+                <div class="skill-category">
+                    <h3>Tools & Platforms</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <i class="fab fa-wordpress"></i>
+                            <span>WordPress</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-shopify"></i>
+                            <span>Shopify</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-android"></i>
+                            <span>Android Studio</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-java"></i>
+                            <span>Java</span>
+                        </div>
                     </div>
-                    <span class="skill-level">85%</span>
-                </div>
-
-                <div class="skill-card" data-category="frontend" data-aos="fade-up" data-aos-delay="150">
-                    <h3>React.js</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 80%"></div>
-                    </div>
-                    <span class="skill-level">80%</span>
-                </div>
-
-                <div class="skill-card" data-category="frontend" data-aos="fade-up" data-aos-delay="200">
-                    <h3>Tailwind CSS</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 85%"></div>
-                    </div>
-                    <span class="skill-level">85%</span>
-                </div>
-
-                <div class="skill-card" data-category="frontend" data-aos="fade-up" data-aos-delay="250">
-                    <h3>Responsive Design</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 90%"></div>
-                    </div>
-                    <span class="skill-level">90%</span>
-                </div>
-
-                <!-- Backend Skills -->
-                <div class="skill-card" data-category="backend" data-aos="fade-up">
-                    <h3>Node.js</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 75%"></div>
-                    </div>
-                    <span class="skill-level">75%</span>
-                </div>
-
-                <div class="skill-card" data-category="backend" data-aos="fade-up" data-aos-delay="50">
-                    <h3>Express.js</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 70%"></div>
-                    </div>
-                    <span class="skill-level">70%</span>
-                </div>
-
-                <div class="skill-card" data-category="backend" data-aos="fade-up" data-aos-delay="100">
-                    <h3>MongoDB</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 65%"></div>
-                    </div>
-                    <span class="skill-level">65%</span>
-                </div>
-
-                <div class="skill-card" data-category="backend" data-aos="fade-up" data-aos-delay="150">
-                    <h3>MySQL</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 60%"></div>
-                    </div>
-                    <span class="skill-level">60%</span>
-                </div>
-
-                <!-- Tools -->
-                <div class="skill-card" data-category="tools" data-aos="fade-up">
-                    <h3>Git</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 80%"></div>
-                    </div>
-                    <span class="skill-level">80%</span>
-                </div>
-
-                <div class="skill-card" data-category="tools" data-aos="fade-up" data-aos-delay="100">
-                    <h3>VS Code</h3>
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 90%"></div>
-                    </div>
-                    <span class="skill-level">90%</span>
                 </div>
             </div>
         </div>
@@ -364,16 +335,9 @@
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>My Projects</h2>
-                <div class="section-divider"></div>
-                <p data-aos="fade-up" data-aos-delay="100">
-                    Here are some of my recent projects. Each project represents my skills and expertise in different
-                    areas of web development.
-                </p>
-            </div>
+            <h2 class="section-title">Featured Projects</h2>
 
-            <div class="project-filter" data-aos="fade-up">
+            <div class="project-filter">
                 <button class="filter-btn active" data-filter="all">All Projects</button>
                 <button class="filter-btn" data-filter="web">Web Development</button>
                 <button class="filter-btn" data-filter="music">Music</button>
@@ -382,270 +346,163 @@
             </div>
 
             <div class="projects-grid">
-                <div class="project-card" data-category="web" data-aos="fade-up">
-                    <div class="project-img">
-                        <img src="https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                            alt="E-Commerce Platform">
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <i class="fas fa-shopping-cart"></i>
                     </div>
-                    <div class="project-info">
+                    <div class="project-content">
                         <h3>E-Commerce Platform</h3>
-                        <p>A fully responsive e-commerce website with product listings, cart functionality, and checkout process.</p>
+                        <p>Full-stack e-commerce application built with MERN stack featuring user authentication,
+                            product management, and payment integration.</p>
                         <div class="project-tech">
+                            <span>MongoDB</span>
+                            <span>Express</span>
                             <span>React</span>
                             <span>Node.js</span>
-                            <span>Express</span>
-                            <span>MongoDB</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link" aria-label="Live Demo">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" x2="21" y1="14" y2="3"></line>
-                                </svg>
-                                <span>Demo</span>
-                            </a>
-                            <a href="https://github.com/AlishPawn1/ecommerce-react" class="project-link" target="_blank"
-                                rel="noopener noreferrer" aria-label="GitHub Repository">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
-                                    </path>
-                                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
-                                </svg>
-                                <span>Code</span>
+                            <a href="https://github.com/AlishPawn1/ecommerce-react" target="_blank">
+                                <i class="fab fa-github"></i> Code
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-img">
-                        <img src="https://www.shutterstock.com/shutterstock/photos/2302697223/display_1500/stock-vector-woman-in-traditional-newari-dress-haku-patasi-2302697223.jpg"
-                            alt="newari dress">
+
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <i class="fas fa-tshirt"></i>
                     </div>
-                    <div class="project-info">
-                        <h3>Newari dress Website</h3>
-                        <p>A stylish website showcasing traditional Newari dresses, ornaments, and culture with easy browsing and online ordering.</p>
+                    <div class="project-content">
+                        <h3>Newari Traditional Dress Website</h3>
+                        <p>Cultural website showcasing traditional Newari dresses with detailed information and gallery,
+                            built using PHP.</p>
                         <div class="project-tech">
+                            <span>PHP</span>
+                            <span>MySQL</span>
                             <span>HTML</span>
                             <span>CSS</span>
-                            <span>JavaScript</span>
-                            <span>PHP</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link" aria-label="Live Demo">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" x2="21" y1="14" y2="3"></line>
-                                </svg>
-                                <span>Demo</span>
-                            </a>
-                            <a href="https://github.com/AlishPawn1/fourthsemProject" class="project-link" target="_blank"
-                                rel="noopener noreferrer" aria-label="GitHub Repository">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
-                                    </path>
-                                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
-                                </svg>
-                                <span>Code</span>
+                            <a href="https://github.com/AlishPawn1/fourthsemProject" target="_blank">
+                                <i class="fab fa-github"></i> Code
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="project-card" data-category="music" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-img">
-                        <img src="https://cdn.pixabay.com/photo/2018/04/11/19/48/music-3311599_1280.png" alt="music">
+
+                <div class="project-card" data-category="music">
+                    <div class="project-image">
+                        <i class="fas fa-music"></i>
                     </div>
-                    <div class="project-info">
-                        <h3>Music website</h3>
-                        <p>An engaging music website featuring artist profiles, playlists, streaming options, and the latest music releases.</p>
+                    <div class="project-content">
+                        <h3>Music Streaming Website</h3>
+                        <p>Django-based music streaming platform with user playlists, music upload, and streaming
+                            capabilities.</p>
                         <div class="project-tech">
                             <span>Python</span>
                             <span>Django</span>
+                            <span>SQLite</span>
+                            <span>Bootstrap</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link" aria-label="Live Demo">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" x2="21" y1="14" y2="3"></line>
-                                </svg>
-                                <span>Demo</span>
-                            </a>
-                            <a href="https://github.com/AlishPawn1/django" class="project-link" target="_blank"
-                                rel="noopener noreferrer" aria-label="GitHub Repository">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
-                                    </path>
-                                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
-                                </svg>
-                                <span>Code</span>
+                            <a href="https://github.com/AlishPawn1/django" target="_blank">
+                                <i class="fab fa-github"></i> Code
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="project-card" data-category="mobile" data-aos="fade-up">
-                    <div class="project-img">
-                        <img src="https://cdn.pixabay.com/photo/2017/04/03/15/52/mobile-phone-2198770_1280.png" alt="mobile App">
+
+                <div class="project-card" data-category="mobile">
+                    <div class="project-image">
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <div class="project-info">
-                        <h3>Mobile App</h3>
-                        <p>A modern mobile app offering seamless navigation, real-time updates, and a smooth user experience across all devices.</p>
+                    <div class="project-content">
+                        <h3>Mobile Application</h3>
+                        <p>Android mobile application developed using Java in Android Studio with modern UI/UX design
+                            principles.</p>
                         <div class="project-tech">
                             <span>Java</span>
+                            <span>Android Studio</span>
+                            <span>XML</span>
+                            <span>SQLite</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link" aria-label="Live Demo">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" x2="21" y1="14" y2="3"></line>
-                                </svg>
-                                <span>Demo</span>
-                            </a>
-                            <a href="https://github.com/AlishPawn1/mobile_programming" class="project-link" target="_blank"
-                                rel="noopener noreferrer" aria-label="GitHub Repository">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
-                                    </path>
-                                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
-                                </svg>
-                                <span>Code</span>
+                            <a href="https://github.com/AlishPawn1/mobile_programming" target="_blank">
+                                <i class="fab fa-github"></i> Code
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="100">
-                    <div class="project-img">
-                        <img src="https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                            alt="Portfolio for Photographer">
+
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <i class="fas fa-user"></i>
                     </div>
-                    <div class="project-info">
-                        <h3>Portfolio</h3>
-                        <p>A portfolio website for a professional website showcasing their work and services.</p>
+                    <div class="project-content">
+                        <h3>Personal Portfolio</h3>
+                        <p>Responsive personal portfolio website showcasing projects and skills, built with vanilla
+                            HTML, CSS, and JavaScript.</p>
                         <div class="project-tech">
                             <span>HTML</span>
                             <span>CSS</span>
                             <span>JavaScript</span>
-                            <span>jQuery</span>
+                            <span>Responsive</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://alishpawn1.github.io/portfolio" class="project-link" aria-label="Live Demo">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" x2="21" y1="14" y2="3"></line>
-                                </svg>
-                                <span>Demo</span>
+                            <a href="https://github.com/AlishPawn1/portfolio" target="_blank">
+                                <i class="fab fa-github"></i> Code
                             </a>
-                            <a href="https://github.com/AlishPawn1/portfolio" class="project-link" target="_blank"
-                                rel="noopener noreferrer" aria-label="GitHub Repository">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
-                                    </path>
-                                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
-                                </svg>
-                                <span>Code</span>
+                            <a href="https://alishpawn1.github.io/portfolio" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="project-card" data-category="collection" data-aos="fade-up" data-aos-delay="200">
-                    <div class="project-img">
-                        <img src="https://cdn.pixabay.com/photo/2016/10/25/23/54/not-found-1770320_1280.jpg" alt="404">
+
+                <div class="project-card" data-category="collection">
+                    <div class="project-image">
+                        <i class="fas fa-exclamation-triangle"></i>
                     </div>
-                    <div class="project-info">
-                        <h3>404 collection</h3>
-                        <p>A creative 404 collection showcasing unique and visually engaging error pages to enhance user experience and retain visitors.</p>
+                    <div class="project-content">
+                        <h3>404 Error Pages Collection</h3>
+                        <p>Creative collection of 404 error pages with unique designs and animations to enhance user
+                            experience.</p>
                         <div class="project-tech">
-                            <span>Html</span>
-                            <span>Css</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                            <span>Animations</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link" aria-label="Live Demo">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" x2="21" y1="14" y2="3"></line>
-                                </svg>
-                                <span>Demo</span>
+                            <a href="https://github.com/AlishPawn1/404-collection" target="_blank">
+                                <i class="fab fa-github"></i> Code
                             </a>
-                            <a href="https://github.com/AlishPawn1/404-collection" class="project-link" target="_blank"
-                                rel="noopener noreferrer" aria-label="GitHub Repository">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
-                                    </path>
-                                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
-                                </svg>
-                                <span>Code</span>
+                            <a href="https://alishpawn1.github.io/404-collection" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="project-card" data-category="collection" data-aos="fade-up">
-                    <div class="project-img">
-                        <img src="https://cdn.pixabay.com/photo/2017/05/12/15/16/hexagon-2307350_1280.png" alt="short code">
+
+                <div class="project-card" data-category="collection">
+                    <div class="project-image">
+                        <i class="fa-solid fa-code"></i>
                     </div>
-                    <div class="project-info">
-                        <h3>Short code</h3>
-                        <p>A creative set of custom 404 pages designed to keep users engaged.</p>
+                    <div class="project-content">
+                        <h3>Short code Collection</h3>
+                        <p>Creative collection of 404 error pages with unique designs and animations to enhance user
+                            experience.</p>
                         <div class="project-tech">
-                            <span>Html</span>
-                            <span>Css</span>
-                            <span>Javascript</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-link" aria-label="Live Demo">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" x2="21" y1="14" y2="3"></line>
-                                </svg>
-                                <span>Demo</span>
+                            <a href="https://github.com/AlishPawn1/short-code" target="_blank">
+                                <i class="fab fa-github"></i> Code
                             </a>
-                            <a href="https://github.com/AlishPawn1/short-code" class="project-link" target="_blank"
-                                rel="noopener noreferrer" aria-label="GitHub Repository">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path
-                                        d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
-                                    </path>
-                                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
-                                </svg>
-                                <span>Code</span>
+                            <a href="https://alishpawn1.github.io/short-code" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live
                             </a>
                         </div>
                     </div>
@@ -657,99 +514,36 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Get In Touch</h2>
-                <div class="section-divider"></div>
-                <p data-aos="fade-up" data-aos-delay="100">
-                    Have a project in mind or want to discuss a potential collaboration? Feel free to reach out!
-                </p>
-            </div>
-
+            <h2 class="section-title">Get In Touch</h2>
             <div class="contact-content">
-                <div class="contact-info" data-aos="fade-right">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>I'm always interested in new opportunities and collaborations. Feel free to reach out!</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>alishpawn00@gmail.com</span>
                         </div>
-                        <div>
-                            <h3>Location</h3>
-                            <p>Bhaktapur, Nepal</p>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+977 9742828051</span>
                         </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3>Email</h3>
-                            <p><a href="mailto:alishpawn00@gmail.com">alishpawn00@gmail.com</a></p>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bhaktapur, Nepal</span>
                         </div>
                     </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path
-                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                                </path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3>Phone</h3>
-                            <p><a href="tel:+9779742828051">+977 9742828051</a></p>
-                        </div>
-                    </div>
-
-                    <div class="social-links-large">
-                        <a href="https://github.com/alishpawn1" target="_blank" rel="noopener noreferrer"
-                            aria-label="GitHub">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path
-                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
-                                </path>
-                                <path d="M9 18c-4.51 2-5-2-7-2"></path>
-                            </svg>
-                            <span>GitHub</span>
-                        </a>
-                        <a href="https://www.facebook.com/alishpawn1" target="_blank" rel="noopener noreferrer"
-                            aria-label="Facebook">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                            <span>Facebook</span>
-                        </a>
-                        <a href="https://www.instagram.com/alishpawn/" target="_blank" rel="noopener noreferrer"
-                            aria-label="Instagram">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-                            </svg>
-                            <span>Instagram</span>
-                        </a>
+                    <div class="social-links">
+                        <a href="https://github.com/AlishPawn1" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/alish-pawn-06a10a346/" target="_blank"><i
+                                class="fab fa-linkedin"></i></a>
+                        <a href="https://www.facebook.com/alishpawn1" target="_blank"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/alishpawn/" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-
-                <div class="contact-form" data-aos="fade-left">
+                <div class="contact-form">
                     <form id="contact-form">
                         <div class="form-group">
                             <label for="name">Your Name</label>
@@ -768,10 +562,10 @@
 
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <textarea id="message" name="message" rows="5" maxlength="2000" required></textarea>
                         </div>
 
-                        <button type="submit" class="btn primary">
+                        <button type="submit" class="btn btn-primary">
                             <span>Send Message</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -786,6 +580,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <!-- Footer -->
     <footer id="footer">
         <div class="container">
@@ -802,6 +597,7 @@
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
+                        <li><a href="#education">Education</a></li>
                         <li><a href="#skills">Skills</a></li>
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#contact">Contact</a></li>
@@ -858,16 +654,31 @@
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <a href="#home" id="back-to-top" aria-label="Back to top">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m18 15-6-6-6 6"></path>
-        </svg>
-    </a>
+    <!-- CV Modal -->
+    <div id="cv-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>CV Preview</h3>
+                <span class="close" id="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="cv-preview-content">
+                    <p>CV preview will be displayed here. You can embed a PDF viewer or show CV content.</p>
+                    <p>For now, click the download button to get the full CV.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="modal-download-cv">
+                    <i class="fas fa-download"></i> Download CV
+                </button>
+            </div>
+        </div>
+    </div>
 
-    <script src="js/main.js"></script>
+    <script src="js/splide.min.js"></script>
+    <script src="js/email.min.js"></script>
     <script src="js/email.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
