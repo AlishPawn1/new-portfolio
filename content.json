@@ -70,7 +70,7 @@
       "degree": "Bachelor in Computer Application (BCA)",
       "institution": "Kathmandu College of Technology",
       "period": "Affiliated with Tribhuvan University",
-      "semester": "3rd Year 6th Semester",
+      "semester": "4th Year 8th Semester",
       "icon": "fas fa-graduation-cap",
       "description": "Currently pursuing an undergraduate degree focused on computer science, software development, database systems, and web technologies. Building strong theoretical foundations and practical skills in programming and IT solutions."
     }
@@ -107,7 +107,7 @@
       "description": "Full-stack e-commerce application built with MERN stack featuring user authentication, product management, and payment integration.",
       "technologies": ["MongoDB", "Express", "React", "Node.js"],
       "github": "https://github.com/alishpawn/ecommerce-react",
-      "live": "https://newaridress.expertservicehub.com/"
+      "live": "https://newaridress.habinsitikhu.com.np/"
     },
     {
       "id": "newari-dress",
@@ -177,7 +177,7 @@
       "description": "Result Management collection with pdf extraction and data management to enhance development workflow.",
       "technologies": ["Nextjs", "Tailwind CSS", "Nodejs"],
       "github": "https://github.com/alishpawn/result_management",
-      "live": "https://result.expertservicehub.com/"
+      "live": "https://result.habinsitikhu.com.np/"
     },
     {
       "id": "erp-system",
@@ -187,7 +187,7 @@
       "description": "ERP system with next js and tailwind css to enhance development workflow.",
       "technologies": ["Nextjs", "Tailwind CSS"],
       "github": "https://github.com/alishpawn/ERPsysterm",
-      "live": "https://expertservicehub.com/"
+      "live": "https://habinsitikhu.com.np/"
     }
   ],
   
