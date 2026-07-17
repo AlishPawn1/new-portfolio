@@ -33,7 +33,7 @@ This component requires shadcn/ui to be set up in your project. Make sure you ha
 Run this single command to install the editor:
 
 ```bash
-npx shadcn@latest add https://alishpawn.com.np/r/registry.json
+npx shadcn@latest add https://www.alishpawn.com.np/r/registry.json
 ```
 
 Or from GitHub:
@@ -50,8 +50,8 @@ This will automatically:
 ### 📖 Documentation
 
 For detailed guides, examples, and customization options, visit:
-- **[Text Editor Guide](https://alishpawn.com.np/shadcn-text-editor-guide)** - Complete editor documentation
-- **[Payment Integration Guide](https://alishpawn.com.np/payment-integration-guide)** - Stripe & Khalti setup
+- **[Text Editor Guide](https://www.alishpawn.com.np/shadcn-text-editor-guide.html)** - Complete editor documentation
+- **[Payment Integration Guide](https://www.alishpawn.com.np/payment-integration-guide.html)** - Stripe & Khalti setup
 
 ### Usage
 
