@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Integration Guide - Stripe & Khalti</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        pre code {
+            display: block;
+            padding: 1rem;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+        }
+        .keyword { color: #569cd6; }
+        .string { color: #ce9178; }
+        .comment { color: #6a9955; }
+        .function { color: #dcdcaa; }
+        .component { color: #4ec9b0; }
+        .env { color: #9cdcfe; }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-100">
+    <div class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Header -->
+        <header class="mb-12">
+            <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
+                💳 Payment Integration Guide
+            </h1>
+            <p class="text-xl text-gray-400">
+                Stripe & Khalti integration for MERN stack ecommerce applications
+            </p>
+            <div class="flex gap-4 mt-6">
+                <span class="px-3 py-1 bg-green-900/50 text-green-400 rounded-full text-sm">Stripe</span>
+                <span class="px-3 py-1 bg-blue-900/50 text-blue-400 rounded-full text-sm">Khalti</span>
+                <span class="px-3 py-1 bg-purple-900/50 text-purple-400 rounded-full text-sm">MERN Stack</span>
+            </div>
+        </header>
+
+        <!-- Quick Start -->
+        <section class="mb-12 p-6 bg-gray-900 rounded-xl border border-gray-800">
+            <h2 class="text-2xl font-semibold mb-4">⚡ Quick Start</h2>
+            <pre><code><span class="comment"># Install dependencies</span>
+npm install stripe axios
+
+<span class="comment"># Add environment variables</span>
+cp .env.example .env</code></pre>
+        </section>
+
+        <!-- Features -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">✨ Features</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">🌍 Stripe Integration</h3>
+                    <p class="text-gray-400 text-sm">International payments with credit/debit cards, 135+ countries</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">📱 Khalti Integration</h3>
+                    <p class="text-gray-400 text-sm">Local Nepali digital wallet payments, 2M+ users</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">🔒 Webhook Handling</h3>
+                    <p class="text-gray-400 text-sm">Automatic payment verification and order updates</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">🧪 Test Mode</h3>
+                    <p class="text-gray-400 text-sm">Sandbox environment for testing before going live</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">🏗️ Architecture</h2>
+            <div class="p-6 bg-gray-900 rounded-xl border border-gray-800">
+                <pre><code>┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Frontend      │    │    Backend      │    │   Payment       │
+│   (React)       │◄──►│   (Node.js)     │◄──►│   Gateways      │
+│                 │    │                 │    │                 │
+│ • Payment UI    │    │ • Order Mgmt    │    │ • Stripe        │
+│ • User Flow     │    │ • Payment API   │    │ • Khalti        │
+│ • Verification  │    │ • Webhooks      │    │ • Webhooks      │
+└─────────────────┘    └─────────────────┘    └─────────────────┘</code></pre>
+            </div>
+        </section>
+
+        <!-- Stripe Setup -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">💳 Stripe Integration</h2>
+
+            <h3 class="text-xl font-semibold mb-4">Step 1: Install Package</h3>
+            <pre><code>npm install stripe</code></pre>
+
+            <h3 class="text-xl font-semibold mb-4 mt-8">Step 2: Environment Variables</h3>
+            <pre><code><span class="comment"># .env</span>
+<span class="env">STRIPE_SECRET_KEY</span>=sk_test_your_key_here
+<span class="env">STRIPE_PUBLISHABLE_KEY</span>=pk_test_your_key_here</code></pre>
+
+            <h3 class="text-xl font-semibold mb-4 mt-8">Step 3: Backend Controller</h3>
+            <pre><code><span class="comment">// controllers/orderController.js</span>
+<span class="keyword">import</span> Stripe <span class="keyword">from</span> <span class="string">"stripe"</span>;
+
+<span class="keyword">const</span> stripe = <span class="keyword">new</span> <span class="component">Stripe</span>(process.env.<span class="env">STRIPE_SECRET_KEY</span>);
+
+<span class="comment">// Place order with Stripe</span>
+<span class="keyword">const</span> <span class="function">placeOrderStripe</span> = <span class="keyword">async</span> (req, res) => {
+  <span class="keyword">try</span> {
+    <span class="keyword">const</span> { userId, items, amount, address } = req.body;
+
+    <span class="comment">// Create order in database</span>
+    <span class="keyword">const</span> orderData = {
+      userId,
+      items,
+      amount,
+      address,
+      status: <span class="string">"order placed"</span>,
+      paymentMethod: <span class="string">"stripe"</span>,
+    };
+    <span class="keyword">const</span> order = <span class="keyword">new</span> <span class="component">Order</span>(orderData);
+    <span class="keyword">await</span> order.<span class="function">save</span>();
+
+    <span class="comment">// Create Stripe session</span>
+    <span class="keyword">const</span> session = <span class="keyword">await</span> stripe.checkout.sessions.<span class="function">create</span>({
+      payment_method_types: [<span class="string">"card"</span>],
+      line_items: items.<span class="function">map</span>((item) => ({
+        price_data: {
+          currency: <span class="string">"npr"</span>,
+          product_data: { name: item.name },
+          unit_amount: item.price * <span class="string">100</span>,
+        },
+        quantity: item.quantity,
+      })),
+      mode: <span class="string">"payment"</span>,
+      success_url: <span class="string">`${origin}/verify?success=true&orderId=${order._id}`</span>,
+      cancel_url: <span class="string">`${origin}/verify?success=false&orderId=${order._id}`</span>,
+    });
+
+    res.<span class="function">json</span>({ success: <span class="keyword">true</span>, session_url: session.url });
+  } <span class="keyword">catch</span> (error) {
+    res.<span class="function">json</span>({ success: <span class="keyword">false</span>, message: error.message });
+  }
+};
+
+<span class="comment">// Verify Stripe payment</span>
+<span class="keyword">const</span> <span class="function">verifyStripe</span> = <span class="keyword">async</span> (req, res) => {
+  <span class="keyword">const</span> { orderId, success } = req.body;
+
+  <span class="keyword">if</span> (success === <span class="string">"true"</span>) {
+    <span class="keyword">await</span> <span class="component">Order</span>.<span class="function">findByIdAndUpdate</span>(orderId, { payment: <span class="keyword">true</span> });
+    res.<span class="function">json</span>({ success: <span class="keyword">true</span> });
+  } <span class="keyword">else</span> {
+    <span class="keyword">await</span> <span class="component">Order</span>.<span class="function">findByIdAndDelete</span>(orderId);
+    res.<span class="function">json</span>({ success: <span class="keyword">false</span> });
+  }
+};</code></pre>
+        </section>
+
+        <!-- Khalti Setup -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">📱 Khalti Integration</h2>
+
+            <h3 class="text-xl font-semibold mb-4">Step 1: Install Package</h3>
+            <pre><code>npm install axios</code></pre>
+
+            <h3 class="text-xl font-semibold mb-4 mt-8">Step 2: Environment Variables</h3>
+            <pre><code><span class="comment"># .env</span>
+<span class="env">KHALTI_SECRET_KEY</span>=your_khalti_secret_key_here
+<span class="env">KHALTI_PUBLIC_KEY</span>=your_khalti_public_key_here
+<span class="env">KHALTI_API_URL</span>=https://a.khalti.com/api/v2/</code></pre>
+
+            <h3 class="text-xl font-semibold mb-4 mt-8">Step 3: Backend Controller</h3>
+            <pre><code><span class="comment">// controllers/orderController.js</span>
+<span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">"axios"</span>;
+
+<span class="comment">// Place order with Khalti</span>
+<span class="keyword">const</span> <span class="function">placeOrderKhalti</span> = <span class="keyword">async</span> (req, res) => {
+  <span class="keyword">try</span> {
+    <span class="keyword">const</span> { userId, items, amount, address } = req.body;
+    <span class="keyword">const</span> origin = req.headers.origin || <span class="string">"http://localhost:5173"</span>;
+
+    <span class="comment">// Create order</span>
+    <span class="keyword">const</span> orderData = {
+      userId,
+      items,
+      amount,
+      address,
+      status: <span class="string">"order placed"</span>,
+      paymentMethod: <span class="string">"khalti"</span>,
+    };
+    <span class="keyword">const</span> order = <span class="keyword">new</span> <span class="component">Order</span>(orderData);
+    <span class="keyword">await</span> order.<span class="function">save</span>();
+
+    <span class="comment">// Initialize Khalti payment</span>
+    <span class="keyword">const</span> payload = {
+      amount: amount * <span class="string">100</span>, <span class="comment">// Amount in paisa</span>
+      product_identity: order._id.toString(),
+      product_name: <span class="string">"Ecommerce Order"</span>,
+      product_url: <span class="string">`${origin}/order/${order._id}`</span>,
+    };
+
+    <span class="keyword">const</span> response = <span class="keyword">await</span> axios.<span class="function">post</span>(
+      <span class="string">`${process.env.KHALTI_API_URL}epayment/initiate/`</span>,
+      payload,
+      {
+        headers: {
+          Authorization: <span class="string">`Key ${process.env.KHALTI_SECRET_KEY}`</span>,
+          <span class="string">"Content-Type"</span>: <span class="string">"application/json"</span>,
+        },
+      }
+    );
+
+    res.<span class="function">json</span>({
+      success: <span class="keyword">true</span>,
+      payment_url: response.data.payment_url,
+    });
+  } <span class="keyword">catch</span> (error) {
+    res.<span class="function">json</span>({ success: <span class="keyword">false</span>, message: error.message });
+  }
+};
+
+<span class="comment">// Verify Khalti payment</span>
+<span class="keyword">const</span> <span class="function">verifyKhalti</span> = <span class="keyword">async</span> (req, res) => {
+  <span class="keyword">const</span> { token, amount, orderId } = req.body;
+
+  <span class="keyword">try</span> {
+    <span class="keyword">const</span> response = <span class="keyword">await</span> axios.<span class="function">post</span>(
+      <span class="string">`${process.env.KHALTI_API_URL}epayment/lookup/`</span>,
+      { token, amount },
+      {
+        headers: {
+          Authorization: <span class="string">`Key ${process.env.KHALTI_SECRET_KEY}`</span>,
+        },
+      }
+    );
+
+    <span class="keyword">if</span> (response.data.state.name === <span class="string">"Complete"</span>) {
+      <span class="keyword">await</span> <span class="component">Order</span>.<span class="function">findByIdAndUpdate</span>(orderId, { payment: <span class="keyword">true</span> });
+      res.<span class="function">json</span>({ success: <span class="keyword">true</span> });
+    } <span class="keyword">else</span> {
+      res.<span class="function">json</span>({ success: <span class="keyword">false</span>, message: <span class="string">"Payment failed"</span> });
+    }
+  } <span class="keyword">catch</span> (error) {
+    res.<span class="function">json</span>({ success: <span class="keyword">false</span>, message: error.message });
+  }
+};</code></pre>
+        </section>
+
+        <!-- Frontend Integration -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">🎨 Frontend Integration</h2>
+
+            <h3 class="text-xl font-semibold mb-4">Payment Selection Component</h3>
+            <pre><code><span class="comment">// components/PaymentSelection.jsx</span>
+<span class="keyword">import</span> { <span class="component">useState</span> } <span class="keyword">from</span> <span class="string">"react"</span>;
+
+<span class="keyword">const</span> <span class="function">PaymentSelection</span> = ({ amount, onSuccess }) => {
+  <span class="keyword">const</span> [paymentMethod, setPaymentMethod] = <span class="function">useState</span>(<span class="string">"stripe"</span>);
+  <span class="keyword">const</span> [loading, setLoading] = <span class="function">useState</span>(<span class="keyword">false</span>);
+
+  <span class="keyword">const</span> <span class="function">handlePayment</span> = <span class="keyword">async</span> () => {
+    <span class="function">setLoading</span>(<span class="keyword">true</span>);
+
+    <span class="keyword">const</span> endpoint = paymentMethod === <span class="string">"stripe"</span>
+      ? <span class="string">"/api/order/stripe"</span>
+      : <span class="string">"/api/order/khalti"</span>;
+
+    <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(endpoint, {
+      method: <span class="string">"POST"</span>,
+      headers: { <span class="string">"Content-Type"</span>: <span class="string">"application/json"</span> },
+      body: JSON.<span class="function">stringify</span>({ amount }),
+    });
+
+    <span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="function">json</span>();
+
+    <span class="keyword">if</span> (data.success) {
+      window.location.href = data.session_url || data.payment_url;
+    }
+  };
+
+  <span class="keyword">return</span> (
+    &lt;<span class="component">div</span> className=<span class="string">"payment-selection"</span>&gt;
+      &lt;<span class="component">h3</span>&gt;Select Payment Method&lt;/<span class="component">h3</span>&gt;
+
+      &lt;<span class="component">label</span>&gt;
+        &lt;<span class="component">input</span>
+          type=<span class="string">"radio"</span>
+          value=<span class="string">"stripe"</span>
+          checked={paymentMethod === <span class="string">"stripe"</span>}
+          onChange={(e) => <span class="function">setPaymentMethod</span>(e.target.value)}
+        /&gt;
+        💳 Credit/Debit Card (Stripe)
+      &lt;/<span class="component">label</span>&gt;
+
+      &lt;<span class="component">label</span>&gt;
+        &lt;<span class="component">input</span>
+          type=<span class="string">"radio"</span>
+          value=<span class="string">"khalti"</span>
+          checked={paymentMethod === <span class="string">"khalti"</span>}
+          onChange={(e) => <span class="function">setPaymentMethod</span>(e.target.value)}
+        /&gt;
+        📱 Khalti Digital Wallet
+      &lt;/<span class="component">label</span>&gt;
+
+      &lt;<span class="component">button</span>
+        onClick={handlePayment}
+        disabled={loading}
+        className=<span class="string">"bg-blue-600 text-white px-6 py-2 rounded"</span>
+      &gt;
+        {loading ? <span class="string">"Processing..."</span> : <span class="string">"Pay Now"</span>}
+      &lt;/<span class="component">button</span>&gt;
+    &lt;/<span class="component">div</span>&gt;
+  );
+};</code></pre>
+        </section>
+
+        <!-- API Routes -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">🔌 API Routes</h2>
+
+            <h3 class="text-xl font-semibold mb-4">Next.js Example</h3>
+            <pre><code><span class="comment">// app/api/order/stripe/route.js</span>
+<span class="keyword">import</span> { <span class="component">NextResponse</span> } <span class="keyword">from</span> <span class="string">"next/server"</span>;
+<span class="keyword">import</span> Stripe <span class="keyword">from</span> <span class="string">"stripe"</span>;
+
+<span class="keyword">const</span> stripe = <span class="keyword">new</span> <span class="component">Stripe</span>(process.env.<span class="env">STRIPE_SECRET_KEY</span>);
+
+<span class="keyword">export async function</span> <span class="function">POST</span>(request) {
+  <span class="keyword">const</span> body = <span class="keyword">await</span> request.<span class="function">json</span>();
+
+  <span class="keyword">const</span> session = <span class="keyword">await</span> stripe.checkout.sessions.<span class="function">create</span>({
+    payment_method_types: [<span class="string">"card"</span>],
+    line_items: [{
+      price_data: {
+        currency: <span class="string">"npr"</span>,
+        product_data: { name: <span class="string">"Order"</span> },
+        unit_amount: body.amount * <span class="string">100</span>,
+      },
+      quantity: <span class="string">1</span>,
+    }],
+    mode: <span class="string">"payment"</span>,
+    success_url: <span class="string">`${process.env.NEXT_PUBLIC_URL}/success`</span>,
+    cancel_url: <span class="string">`${process.env.NEXT_PUBLIC_URL}/cancel`</span>,
+  });
+
+  <span class="keyword">return</span> <span class="component">NextResponse</span>.<span class="function">json</span>({ url: session.url });
+}</code></pre>
+        </section>
+
+        <!-- Testing -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">🧪 Testing</h2>
+
+            <h3 class="text-xl font-semibold mb-4">Stripe Test Cards</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="border-b border-gray-800">
+                            <th class="py-3 px-4">Card Number</th>
+                            <th class="py-3 px-4">Result</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-800">
+                            <td class="py-3 px-4"><code>4242 4242 4242 4242</code></td>
+                            <td class="py-3 px-4">✅ Success</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="py-3 px-4"><code>4000 0000 0000 0002</code></td>
+                            <td class="py-3 px-4">❌ Declined</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="py-3 px-4"><code>4000 0025 0000 3155</code></td>
+                            <td class="py-3 px-4">🔐 Requires 3D Secure</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="text-xl font-semibold mb-4 mt-8">Khalti Test Credentials</h3>
+            <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                <p class="mb-2"><strong>Public Key:</strong> <code>test_public_key_xxxxx</code></p>
+                <p><strong>Secret Key:</strong> <code>test_secret_key_xxxxx</code></p>
+            </div>
+        </section>
+
+        <!-- Environment Variables -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">⚙️ Environment Variables</h2>
+            <pre><code><span class="comment"># .env</span>
+
+<span class="comment"># Stripe</span>
+<span class="env">STRIPE_SECRET_KEY</span>=sk_test_xxxxx
+<span class="env">STRIPE_PUBLISHABLE_KEY</span>=pk_test_xxxxx
+
+<span class="comment"># Khalti</span>
+<span class="env">KHALTI_SECRET_KEY</span>=test_xxxxx
+<span class="env">KHALTI_PUBLIC_KEY</span>=test_xxxxx
+<span class="env">KHALTI_API_URL</span>=https://a.khalti.com/api/v2/
+
+<span class="comment"># App</span>
+<span class="env">NEXT_PUBLIC_URL</span>=http://localhost:3000</code></pre>
+        </section>
+
+        <!-- Troubleshooting -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">🔧 Troubleshooting</h2>
+
+            <div class="space-y-4">
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">❌ "Invalid API key"</h3>
+                    <p class="text-gray-400 text-sm">Check your environment variables are correct and server is restarted</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">❌ "Amount must be at least 50"</h3>
+                    <p class="text-gray-400 text-sm">Minimum amount for Khalti is 50 NPR (5000 paisa)</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">❌ "Webhook not received"</h3>
+                    <p class="text-gray-400 text-sm">Use ngrok for local testing: <code>ngrok http 3000</code></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">💬 Support</h2>
+            <div class="p-6 bg-gray-900 rounded-xl border border-gray-800">
+                <p class="mb-4">Found an issue? Have a question?</p>
+                <a href="https://github.com/alishpawn/new-portfolio/issues"
+                   class="inline-block px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-semibold transition-colors">
+                    Open an Issue on GitHub
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-500 pt-8 border-t border-gray-800">
+            <p>Built by <a href="https://alishpawn.com.np" class="text-blue-400 hover:underline">Alish Pawn</a></p>
+        </footer>
+    </div>
+</body>
+</html>
