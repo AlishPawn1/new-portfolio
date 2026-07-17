@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-site-verification" content="81CK1JFeqPg0Ml9JTq6WXjnNzdbiGUCIIpK4YVutho4" />
+    
+    <!-- SEO Meta Tags -->
+    <title>Alish Pawn - Web Developer Portfolio</title>
+    <meta name="title" content="Alish Pawn - Web Developer Portfolio" />
+    <meta name="description" content="Explore the professional portfolio of Alish Pawn, a frontend web developer and BCA student based in Nepal. View projects, skills, and contact info." />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://alishpawn.com.np" />
+T
+    <!-- Favicon -->
+    <link rel="icon" href="image/image.png" type="image/png" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="css/all.css" />
+    <link rel="stylesheet" type="text/css" href="css/splide.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Schema.org JSON-LD for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Alish Pawn",
+      "url": "https://alishpawn.com.np",
+      "sameAs": [
+        "https://www.linkedin.com/in/alish-pawn-06a10a346/",
+        "https://github.com/AlishPawn1",
+        "https://www.facebook.com/alishpawn1",
+        "https://www.instagram.com/alishpawn/"
+      ],
+      "jobTitle": "Frontend Web Developer",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bhaktapur",
+        "addressCountry": "Nepal"
+      }
+    }
+    </script>
+</head>
+
+
+<body>
+    <canvas id="fluidCanvas"></canvas>
+    <div class="mouse-cursor cursor-outer"></div>
+    <div class="mouse-cursor cursor-inner"></div>
+    <!-- Navigation -->
+    <!-- Navigation - Content loaded from content.json -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">Loading...</a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <!-- Menu items loaded dynamically -->
+            </div>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Content loaded from content.json -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Loading...
+                </h1>
+                <p class="hero-subtitle">Loading...</p>
+                <p class="hero-description">
+                    Loading content...
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    <a href="#" class="btn btn-outline" id="download-cv">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                </div>
+                <div class="social-links">
+                    <!-- Social links loaded dynamically -->
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-card">
+                    <div class="profile-img">
+                        <img src="image/it's me.jpg" alt="Profile">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section - Content loaded from content.json -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <!-- About text and personal info loaded dynamically -->
+                </div>
+                <div class="about-stats">
+                    <!-- Stats loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Section -->
+    <section id="cv" class="cv-section">
+        <div class="container">
+            <h2 class="section-title">Curriculum Vitae</h2>
+            <div class="cv-content">
+                <div class="cv-preview">
+                    <div class="cv-card">
+                        <div class="cv-header">
+                            <i class="fas fa-file-pdf"></i>
+                            <h3>My Resume</h3>
+                        </div>
+                        <div class="cv-details">
+                            <p>Download my complete CV to learn more about my experience, education, and skills.</p>
+                            <ul class="cv-highlights">
+                                <li><i class="fas fa-check"></i> Complete work experience</li>
+                                <li><i class="fas fa-check"></i> Educational background</li>
+                                <li><i class="fas fa-check"></i> Technical skills & certifications</li>
+                                <li><i class="fas fa-check"></i> Project portfolio</li>
+                                <li><i class="fas fa-check"></i> Contact information</li>
+                            </ul>
+                        </div>
+                        <div class="cv-actions">
+                            <button class="btn btn-primary" id="download-cv-main">
+                                <i class="fas fa-download"></i> Download PDF
+                            </button>
+                            <button class="btn btn-outline" id="view-cv">
+                                <i class="fas fa-eye"></i> Preview CV
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="cv-info">
+                    <h3>Why Download My CV?</h3>
+                    <div class="cv-benefits">
+                        <div class="benefit-item">
+                            <i class="fas fa-user-graduate"></i>
+                            <div>
+                                <h4>Educational Journey</h4>
+                                <p>Detailed information about my BCA studies and academic achievements.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-code"></i>
+                            <div>
+                                <h4>Technical Expertise</h4>
+                                <p>Comprehensive list of programming languages, frameworks, and tools I work with.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-project-diagram"></i>
+                            <div>
+                                <h4>Project Experience</h4>
+                                <p>Detailed descriptions of projects I've worked on with technologies used.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-award"></i>
+                            <div>
+                                <h4>Achievements</h4>
+                                <p>Certifications, awards, and recognition I've received in my journey.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section - Content loaded from content.json -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+
+            <!-- Splide Slider Wrapper -->
+            <div class="splide education-slider">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <!-- Education items loaded dynamically -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section - Content loaded from content.json -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="skills-content">
+                <!-- Skills loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section - Content loaded from content.json -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+
+            <div class="project-filter">
+                <!-- Filter buttons loaded dynamically -->
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project cards loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Integration Section -->
+    <section id="payment-integration" class="payment-integration" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Payment Integration Expertise</h2>
+            <div class="payment-content">
+                <div class="payment-intro">
+                    <p class="payment-description">
+                        I specialize in implementing robust payment gateway integrations for ecommerce platforms. 
+                        My expertise includes integrating both international (Stripe) and local (Khalti) payment 
+                        solutions to create seamless payment experiences for diverse customer bases.
+                    </p>
+                </div>
+                
+                <div class="payment-showcase">
+                    <div class="payment-card">
+                        <div class="payment-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <div class="payment-details">
+                            <h3>Multi-Payment Ecommerce Platform</h3>
+                            <p>A comprehensive ecommerce solution featuring dual payment gateway integration with Stripe and Khalti.</p>
+                            <div class="payment-features">
+                                <div class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Stripe Integration (International Payments)</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Khalti Integration (Local Nepali Payments)</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>MERN Stack Implementation</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Secure Payment Processing</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check"></i>
+                                    <span>Comprehensive Error Handling</span>
+                                </div>
+                            </div>
+                            <div class="payment-tech">
+                                <span>React</span>
+                                <span>Node.js</span>
+                                <span>MongoDB</span>
+                                <span>Stripe API</span>
+                                <span>Khalti API</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment-docs">
+                    <h3>Documentation & Resources</h3>
+                    <div class="docs-grid">
+                        <div class="doc-card">
+                            <div class="doc-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="doc-content">
+                                <h4>Payment Integration Blog</h4>
+                                <p>Comprehensive blog post covering the complete implementation of multi-payment gateway integration, including technical architecture, security considerations, and best practices.</p>
+                                <div class="doc-highlights">
+                                    <span>Technical Architecture</span>
+                                    <span>Security Implementation</span>
+                                    <span>Performance Optimization</span>
+                                    <span>Production Deployment</span>
+                                </div>
+                                <a href="PAYMENT_INTEGRATION_BLOG.md" target="_blank" class="btn btn-outline">
+                                    <i class="fas fa-external-link-alt"></i> Read Blog
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="doc-card">
+                            <div class="doc-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="doc-content">
+                                <h4>Implementation Guide</h4>
+                                <p>Step-by-step technical guide for implementing Stripe and Khalti payment gateways, including code examples, testing procedures, and troubleshooting tips.</p>
+                                <div class="doc-highlights">
+                                    <span>Code Examples</span>
+                                    <span>Testing Procedures</span>
+                                    <span>Troubleshooting</span>
+                                    <span>Environment Setup</span>
+                                </div>
+                                <a href="PAYMENT_INTEGRATION_GUIDE.md" target="_blank" class="btn btn-outline">
+                                    <i class="fas fa-external-link-alt"></i> View Guide
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - Content loaded from content.json -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Loading...</h3>
+                    <p>Loading...</p>
+                    <div class="contact-details">
+                        <!-- Contact details loaded dynamically -->
+                    </div>
+                    <div class="social-links">
+                        <!-- Social links loaded dynamically -->
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" maxlength="2000" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            <span>Send Message</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="m22 2-7 20-4-9-9-4Z"></path>
+                                <path d="M22 2 11 13"></path>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - Content loaded from content.json -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <!-- Footer description loaded dynamically -->
+                </div>
+
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <!-- Footer links loaded dynamically -->
+                    </ul>
+                </div>
+
+                <div class="footer-social">
+                    <h3>Connect With Me</h3>
+                    <div class="social-icons">
+                        <!-- Social icons loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Alish Pawn. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CV Modal -->
+    <div id="cv-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>CV Preview</h3>
+                <span class="close" id="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="cv-preview-content">
+                    <p>CV preview will be displayed here. You can embed a PDF viewer or show CV content.</p>
+                    <p>For now, click the download button to get the full CV.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="modal-download-cv">
+                    <i class="fas fa-download"></i> Download CV
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dynamic Content Loader - Edit content.json to update your portfolio -->
+    <script src="js/content-loader.js"></script>
+    
+    <script src="js/jQuery.js"></script>
+    <script src="js/splide.min.js"></script>
+    <script src="js/email.min.js"></script>
+    <script src="js/email.js"></script>
+    <script src="js/WebGL.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Automatically update copyright year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

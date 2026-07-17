@@ -1,0 +1,220 @@
+{
+  "personalInfo": {
+    "name": "Alish Pawn",
+    "title": "Frontend Web Developer & BCA Student",
+    "heroDescription": "Passionate about creating beautiful, responsive web applications using modern technologies like React, JavaScript, and more.",
+    "profileImage": "image/it's me.jpg",
+    "email": "alishpawn00@gmail.com",
+    "phone": "+977 9742828051",
+    "location": "Bhaktapur, Nepal",
+    "birthday": "July 11, 2003",
+    "locationLink": "https://www.google.com/maps/place/Bhaktapur,+Nepal"
+  },
+  
+  "seo": {
+    "siteTitle": "Alish Pawn - Web Developer Portfolio",
+    "siteDescription": "Explore the professional portfolio of Alish Pawn, a frontend web developer and BCA student based in Nepal. View projects, skills, and contact info.",
+    "canonicalUrl": "https://alishpawn.com.np"
+  },
+  
+  "socialMedia": {
+    "github": "https://github.com/alishpawn",
+    "linkedin": "https://www.linkedin.com/in/alish-pawn-06a10a346/",
+    "facebook": "https://www.facebook.com/alishpawn1",
+    "instagram": "https://www.instagram.com/alishpawn/"
+  },
+  
+  "navigation": [
+    { "label": "Home", "href": "#home" },
+    { "label": "About", "href": "#about" },
+    { "label": "Education", "href": "#education" },
+    { "label": "Skills", "href": "#skills" },
+    { "label": "Projects", "href": "#projects" },
+    { "label": "Payment Integration", "href": "#payment-integration" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+  
+  "about": {
+    "paragraphs": [
+      "I'm a passionate web developer currently pursuing my Bachelor's in Computer Application (BCA) at Kathmandu College of Technology, affiliated with Tribhuvan University. I'm in my 3rd year, 6th semester, and have been developing my skills in frontend web development.",
+      "My journey in web development started with HTML, CSS, and JavaScript, and has evolved to include modern frameworks like React. I enjoy creating user-friendly, responsive websites and have experience with various tools and platforms including WordPress, Shopify, and DBeaver."
+    ],
+    "stats": [
+      { "number": "6+", "label": "Projects Completed" },
+      { "number": "3+", "label": "Years Learning" },
+      { "number": "10+", "label": "Technologies Used" }
+    ]
+  },
+  
+  "education": [
+    {
+      "id": "see",
+      "degree": "Secondary Education Examination (SEE)",
+      "institution": "Sooryodaya Secondary School",
+      "period": "Completed in 2019 A.D",
+      "gpa": "3.20",
+      "icon": "fas fa-graduation-cap",
+      "description": "Completed foundational education with a strong emphasis on core subjects such as English, Mathematics, Science, and Social Studies. Developed discipline, academic consistency, and a base for future academic pursuits."
+    },
+    {
+      "id": "plus2",
+      "degree": "+2 in Business Management",
+      "institution": "Bagiswori Secondary School",
+      "period": "2019 – 2021",
+      "gpa": "2.48",
+      "icon": "fas fa-university",
+      "description": "Gained fundamental knowledge in business practices, economics, accountancy, and management principles. This program helped develop analytical thinking and an understanding of organizational operations."
+    },
+    {
+      "id": "bca",
+      "degree": "Bachelor in Computer Application (BCA)",
+      "institution": "Kathmandu College of Technology",
+      "period": "Affiliated with Tribhuvan University",
+      "semester": "4th Year 8th Semester",
+      "icon": "fas fa-graduation-cap",
+      "description": "Currently pursuing an undergraduate degree focused on computer science, software development, database systems, and web technologies. Building strong theoretical foundations and practical skills in programming and IT solutions."
+    }
+  ],
+  
+  "skills": {
+    "Frontend Development": [
+      { "icon": "fab fa-html5", "name": "HTML5" },
+      { "icon": "fab fa-css3-alt", "name": "CSS3" },
+      { "icon": "fab fa-js-square", "name": "JavaScript" },
+      { "icon": "fab fa-react", "name": "React" }
+    ],
+    "Backend & Database": [
+      { "icon": "fab fa-php", "name": "PHP" },
+      { "icon": "fab fa-python", "name": "Python (Django)" },
+      { "icon": "fas fa-database", "name": "DBeaver" },
+      { "icon": "fab fa-node-js", "name": "Node.js" }
+    ],
+    "Tools & Platforms": [
+      { "icon": "fab fa-wordpress", "name": "WordPress" },
+      { "icon": "fab fa-shopify", "name": "Shopify" },
+      { "icon": "fab fa-android", "name": "Android Studio" },
+      { "icon": "fab fa-java", "name": "Java" },
+      { "icon": "fas fa-store", "name": "NopCommerce" }
+    ]
+  },
+  
+  "projects": [
+    {
+      "id": "ecommerce",
+      "title": "E-Commerce Platform",
+      "category": "web",
+      "image": "image/newari traditional.png",
+      "description": "Full-stack e-commerce application built with MERN stack featuring user authentication, product management, and payment integration.",
+      "technologies": ["MongoDB", "Express", "React", "Node.js"],
+      "github": "https://github.com/alishpawn/ecommerce-react",
+      "live": "https://newaridress.habinsitikhu.com.np/"
+    },
+    {
+      "id": "newari-dress",
+      "title": "Newari Traditional Dress Website",
+      "category": "web",
+      "image": "image/ecommerce.avif",
+      "description": "Cultural website showcasing traditional Newari dresses with detailed information and gallery, built using PHP.",
+      "technologies": ["PHP", "MySQL", "HTML", "CSS"],
+      "github": "https://github.com/alishpawn/fourthsemProject",
+      "live": null
+    },
+    {
+      "id": "music-streaming",
+      "title": "Music Streaming Website",
+      "category": "music",
+      "image": "image/music.jpg",
+      "description": "Django-based music streaming platform with user playlists, music upload, and streaming capabilities.",
+      "technologies": ["Python", "Django", "SQLite", "Bootstrap"],
+      "github": "https://github.com/alishpawn/django",
+      "live": null
+    },
+    {
+      "id": "mobile-app",
+      "title": "Mobile Application",
+      "category": "mobile",
+      "image": "image/mobile.avif",
+      "description": "Android mobile application developed using Java in Android Studio with modern UI/UX design principles.",
+      "technologies": ["Java", "Android Studio", "XML", "SQLite"],
+      "github": "https://github.com/alishpawn/mobile_programming",
+      "live": null
+    },
+    {
+      "id": "portfolio",
+      "title": "Personal Portfolio",
+      "category": "web",
+      "image": "image/portfolio.png",
+      "description": "Responsive personal portfolio website showcasing projects and skills, built with vanilla HTML, CSS, and JavaScript.",
+      "technologies": ["HTML", "CSS", "JavaScript", "Responsive"],
+      "github": "https://github.com/alishpawn/portfolio",
+      "live": "https://alishpawn.github.io/portfolio"
+    },
+    {
+      "id": "404-collection",
+      "title": "404 Error Pages Collection",
+      "category": "collection",
+      "image": "image/404.png",
+      "description": "Creative collection of 404 error pages with unique designs and animations to enhance user experience.",
+      "technologies": ["HTML", "CSS", "JavaScript", "Animations"],
+      "github": "https://github.com/alishpawn/404-collection",
+      "live": "https://alishpawn.github.io/404-collection"
+    },
+    {
+      "id": "shortcode",
+      "title": "Short code Collection",
+      "category": "collection",
+      "image": "image/shortcode.png",
+      "description": "Creative collection of code snippets with unique designs and implementations to enhance development workflow.",
+      "technologies": ["HTML", "CSS", "JavaScript"],
+      "github": "https://github.com/alishpawn/short-code",
+      "live": "https://alishpawn.github.io/short-code"
+    },
+    {
+      "id": "management-collection",
+      "title": "Result management system",
+      "category": "web",
+      "image": "image/result.png",
+      "description": "Result Management collection with pdf extraction and data management to enhance development workflow.",
+      "technologies": ["Nextjs", "Tailwind CSS", "Nodejs"],
+      "github": "https://github.com/alishpawn/result_management",
+      "live": "https://result.habinsitikhu.com.np/"
+    },
+    {
+      "id": "erp-system",
+      "title": "ERP System",
+      "category": "web",
+      "image": "image/erpsystem.png",
+      "description": "ERP system with next js and tailwind css to enhance development workflow.",
+      "technologies": ["Nextjs", "Tailwind CSS"],
+      "github": "https://github.com/alishpawn/ERPsysterm",
+      "live": "https://habinsitikhu.com.np/"
+    }
+  ],
+  
+  "projectFilters": [
+    { "filter": "all", "label": "All Projects" },
+    { "filter": "web", "label": "Web Development" },
+    { "filter": "music", "label": "Music" },
+    { "filter": "mobile", "label": "Mobile Apps" },
+    { "filter": "collection", "label": "Collection" }
+  ],
+  
+  "contact": {
+    "heading": "Get In Touch",
+    "subheading": "Let's Connect",
+    "description": "I'm always interested in new opportunities and collaborations. Feel free to reach out!"
+  },
+  
+  "footer": {
+    "description": "Frontend Web Developer & BCA Student based in Bhaktapur, Nepal.",
+    "tagline": "Specializing in React, JavaScript, and modern web technologies. Passionate about creating responsive, user-friendly web applications and implementing secure payment integrations.",
+    "quickLinks": [
+      { "label": "Home", "href": "#home" },
+      { "label": "About", "href": "#about" },
+      { "label": "Education", "href": "#education" },
+      { "label": "Skills", "href": "#skills" },
+      { "label": "Projects", "href": "#projects" },
+      { "label": "Contact", "href": "#contact" }
+    ]
+  }
+}

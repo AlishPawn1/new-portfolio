@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Integration Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #fbbf24;
+            --accent-color: #10b981;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-card: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #3b82f6;
+            --secondary-color: #fbbf24;
+            --accent-color: #10b981;
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --bg-card: #374151;
+            --border-color: #4b5563;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 0.75rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Navigation */
+        .nav-tabs {
+            display: flex;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 0.5rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .nav-tab.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-tab:hover:not(.active) {
+            background: var(--bg-card);
+            color: var(--text-primary);
+        }
+
+        /* Content */
+        .content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .card-icon.blog {
+            background: var(--gradient-primary);
+        }
+
+        .card-icon.guide {
+            background: var(--gradient-secondary);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .card-content {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-item i {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .nav-tabs {
+                flex-direction: column;
+            }
+
+            .nav-tab {
+                justify-content: flex-start;
+            }
+
+            .card-features {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .card-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Loading animation */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            color: var(--text-secondary);
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border-color);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div>
+                    <h1><i class="fas fa-credit-card"></i> Payment Integration Docs</h1>
+                    <p>Comprehensive guides for Stripe & Khalti payment gateway integration</p>
+                </div>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-tab="overview">
+                <i class="fas fa-home"></i>
+                Overview
+            </button>
+            <button class="nav-tab" data-tab="blog">
+                <i class="fas fa-book"></i>
+                Blog Post
+            </button>
+            <button class="nav-tab" data-tab="guide">
+                <i class="fas fa-code"></i>
+                Implementation Guide
+            </button>
+        </div>
+
+        <!-- Overview Content -->
+        <div class="content active" id="overview">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon blog">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div>
+                        <h2 class="card-title">Payment Integration Blog</h2>
+                        <p class="card-subtitle">Comprehensive technical blog covering multi-payment gateway implementation</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p>A detailed blog post that covers the complete implementation of multi-payment gateway integration, including technical architecture, security considerations, and best practices. This comprehensive guide explores how we built a robust ecommerce platform that integrates both Stripe (for international payments) and Khalti (for local Nepali payments).</p>
+                </div>
+                <div class="card-features">
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Technical Architecture</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Security Implementation</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Performance Optimization</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Production Deployment</span>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <a href="PAYMENT_INTEGRATION_BLOG.md" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-external-link-alt"></i>
+                        Read Full Blog
+                    </a>
+                    <button class="btn btn-outline" onclick="showContent('blog')">
+                        <i class="fas fa-eye"></i>
+                        Preview Content
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon guide">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div>
+                        <h2 class="card-title">Implementation Guide</h2>
+                        <p class="card-subtitle">Step-by-step technical guide with code examples and best practices</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p>A comprehensive step-by-step technical guide for implementing Stripe and Khalti payment gateways in your ecommerce application. This guide includes detailed code examples, testing procedures, troubleshooting tips, and environment setup instructions to help you build a robust payment system.</p>
+                </div>
+                <div class="card-features">
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Code Examples</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Testing Procedures</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Troubleshooting</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>Environment Setup</span>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <a href="PAYMENT_INTEGRATION_GUIDE.md" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-external-link-alt"></i>
+                        View Full Guide
+                    </a>
+                    <button class="btn btn-outline" onclick="showContent('guide')">
+                        <i class="fas fa-eye"></i>
+                        Preview Content
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="card">
+                <h2 class="card-title" style="margin-bottom: 1.5rem;">Key Achievements</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">98.5%</div>
+                        <div class="stat-label">Payment Success Rate</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2.3s</div>
+                        <div class="stat-label">Average Processing Time</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">30%</div>
+                        <div class="stat-label">Increase in Conversion</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">99.5%</div>
+                        <div class="stat-label">Uptime Reliability</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog Content -->
+        <div class="content" id="blog">
+            <div class="loading">
+                <div class="spinner"></div>
+            </div>
+        </div>
+
+        <!-- Guide Content -->
+        <div class="content" id="guide">
+            <div class="loading">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3>Payment Integration Documentation</h3>
+                <p>Comprehensive guides for implementing robust payment solutions in ecommerce applications</p>
+                <div class="social-links">
+                    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const icon = themeToggle.querySelector('i');
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
+
+        // Tab navigation
+        const navTabs = document.querySelectorAll('.nav-tab');
+        const contents = document.querySelectorAll('.content');
+
+        navTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetTab = tab.getAttribute('data-tab');
+                
+                // Update active tab
+                navTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Update active content
+                contents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === targetTab) {
+                        content.classList.add('active');
+                    }
+                });
+
+                // Load content if needed
+                if (targetTab === 'blog' || targetTab === 'guide') {
+                    loadContent(targetTab);
+                }
+            });
+        });
+
+        function showContent(tabName) {
+            // Update active tab
+            navTabs.forEach(t => t.classList.remove('active'));
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            
+            // Update active content
+            contents.forEach(content => {
+                content.classList.remove('active');
+                if (content.id === tabName) {
+                    content.classList.add('active');
+                }
+            });
+
+            // Load content
+            loadContent(tabName);
+        }
+
+        function loadContent(tabName) {
+            const contentDiv = document.getElementById(tabName);
+            
+            // Show loading
+            contentDiv.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+            
+            // Simulate loading content (in real implementation, you'd fetch the markdown content)
+            setTimeout(() => {
+                if (tabName === 'blog') {
+                    contentDiv.innerHTML = `
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-icon blog">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <div>
+                                    <h2 class="card-title">💳 Building a Multi-Payment Ecommerce Platform</h2>
+                                    <p class="card-subtitle">Stripe & Khalti Integration</p>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <p>This comprehensive blog post covers the complete implementation of multi-payment gateway integration, including technical architecture, security considerations, and best practices.</p>
+                                <p>The blog explores how we built a robust ecommerce platform that integrates both Stripe (for international payments) and Khalti (for local Nepali payments).</p>
+                                <p>Key topics covered:</p>
+                                <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                                    <li>Technical Architecture Overview</li>
+                                    <li>Stripe Integration Implementation</li>
+                                    <li>Khalti Integration Implementation</li>
+                                    <li>Frontend User Experience</li>
+                                    <li>Testing & Quality Assurance</li>
+                                    <li>Performance & Optimization</li>
+                                    <li>Security & Compliance</li>
+                                    <li>Production Deployment</li>
+                                </ul>
+                            </div>
+                            <div class="card-actions">
+                                <a href="PAYMENT_INTEGRATION_BLOG.md" target="_blank" class="btn btn-primary">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Read Full Blog
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                } else if (tabName === 'guide') {
+                    contentDiv.innerHTML = `
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-icon guide">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div>
+                                    <h2 class="card-title">💳 Payment Gateway Integration Guide</h2>
+                                    <p class="card-subtitle">Stripe & Khalti Integration for Ecommerce Project</p>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <p>A comprehensive step-by-step technical guide for implementing Stripe and Khalti payment gateways in your ecommerce application.</p>
+                                <p>This guide includes detailed code examples, testing procedures, troubleshooting tips, and environment setup instructions.</p>
+                                <p>Guide sections:</p>
+                                <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                                    <li>🚀 Prerequisites & Setup</li>
+                                    <li>💳 Stripe Integration</li>
+                                    <li>📱 Khalti Integration</li>
+                                    <li>🎨 Frontend Integration</li>
+                                    <li>🧪 Testing Procedures</li>
+                                    <li>⚙️ Environment Variables</li>
+                                    <li>🔧 Troubleshooting</li>
+                                    <li>🚀 Production Deployment</li>
+                                </ul>
+                            </div>
+                            <div class="card-actions">
+                                <a href="PAYMENT_INTEGRATION_GUIDE.md" target="_blank" class="btn btn-primary">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    View Full Guide
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html> 
