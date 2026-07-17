@@ -10,6 +10,7 @@ A rich text editor component for [shadcn/ui](https://ui.shadcn.com) built with [
 - Links with floating editor popup
 - Tables
 - Text alignment and indentation
+- **Tab indentation** - Press Tab to indent, Shift+Tab to outdent
 - Font family, font size, font color, and highlight color
 - Floating text format toolbar (appears on text selection)
 - Undo/Redo
@@ -67,6 +68,34 @@ function MyPage() {
 | `placeholder` | `string` | `"Type "/" for commands..."` | Placeholder text |
 | `className` | `string` | - | Additional CSS classes for the editor wrapper |
 | `editable` | `boolean` | `true` | Whether the editor is editable |
+
+---
+
+## Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `Tab` | Indent current line (list items, code blocks) |
+| `Shift+Tab` | Outdent current line |
+| `Ctrl/Cmd+B` | Bold |
+| `Ctrl/Cmd+I` | Italic |
+| `Ctrl/Cmd+U` | Underline |
+| `Ctrl/Cmd+Z` | Undo |
+| `Ctrl/Cmd+Shift+Z` | Redo |
+
+### Tab Indentation
+
+The editor uses `TabIndentationPlugin` to handle tab key presses:
+
+- **Tab**: Indents the current line (works in lists, code blocks, blockquotes)
+- **Shift+Tab**: Outdents the current line
+- Works with nested lists (creates sub-lists)
+- Maintains proper hierarchy in numbered and bullet lists
+
+```tsx
+// TabIndentationPlugin is automatically included
+<TabIndentationPlugin />
+```
 
 ---
 
