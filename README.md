@@ -27,35 +27,23 @@ This component requires shadcn/ui to be set up in your project. Make sure you ha
 1. A Next.js (or similar) project with Tailwind CSS
 2. shadcn/ui initialized (`npx shadcn@latest init`)
 
-### Required shadcn/ui Components
+### One-Line Install
 
-Install these shadcn/ui components that the editor depends on:
-
-```bash
-npx shadcn@latest add button dialog dropdown-menu input tabs toggle toggle-group separator label checkbox field popover
-```
-
-### Copy the Editor Files
-
-Copy the entire `registry/` folder into your project's `components/` directory:
+Run this single command to install the editor:
 
 ```bash
-# From the shadcn-lexical-editor directory
-cp -r registry/ your-project/components/shadcn-editor/
+npx shadcn@latest add https://raw.githubusercontent.com/alishpawn/new-portfolio/main/registry.json
 ```
 
-Then update the `@/` import paths in the editor files to match your project structure. If you placed the files under `components/shadcn-editor/`, the imports should work as-is (assuming your `tsconfig.json` has `@/components/*` mapped).
-
-### Install Peer Dependencies
-
-```bash
-npm install lexical @lexical/rich-text @lexical/react @lexical/list @lexical/link @lexical/code @lexical/selection @lexical/utils @lexical/extension @lexical/text @lexical/markdown @lexical/table lucide-react
-```
+This will automatically:
+- ✅ Copy all editor files to `components/ui/rich-text-editor/`
+- ✅ Install all Lexical dependencies
+- ✅ Set up import paths correctly
 
 ### Usage
 
 ```tsx
-import { RichTextEditor } from "@/components/shadcn-editor";
+import { RichTextEditor } from "@/components/ui/rich-text-editor";
 
 function MyPage() {
   const [content, setContent] = useState("");
