@@ -50,7 +50,8 @@ This will automatically:
 ### 📖 Documentation
 
 For detailed guides, examples, and customization options, visit:
-**[https://alishpawn.com.np/shadcn-text-editor-guide](https://alishpawn.com.np/shadcn-text-editor-guide)**
+- **[Text Editor Guide](https://alishpawn.com.np/shadcn-text-editor-guide)** - Complete editor documentation
+- **[Payment Integration Guide](https://alishpawn.com.np/payment-integration-guide)** - Stripe & Khalti setup
 
 ### Usage
 
