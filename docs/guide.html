@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadcn Lexical Editor - Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        pre code {
+            display: block;
+            padding: 1rem;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+        }
+        .keyword { color: #569cd6; }
+        .string { color: #ce9178; }
+        .comment { color: #6a9955; }
+        .function { color: #dcdcaa; }
+        .component { color: #4ec9b0; }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-100">
+    <div class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Header -->
+        <header class="mb-12">
+            <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                Shadcn Lexical Editor
+            </h1>
+            <p class="text-xl text-gray-400">
+                A powerful rich text editor component for shadcn/ui built with Lexical
+            </p>
+        </header>
+
+        <!-- Quick Install -->
+        <section class="mb-12 p-6 bg-gray-900 rounded-xl border border-gray-800">
+            <h2 class="text-2xl font-semibold mb-4">⚡ Quick Install</h2>
+            <pre><code><span class="comment"># Install with one command</span>
+npx shadcn@latest add https://alishpawn.com.np/r/registry.json</code></pre>
+        </section>
+
+        <!-- Features -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">✨ Features</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">📝 Text Formatting</h3>
+                    <p class="text-gray-400 text-sm">Bold, Italic, Underline, Strikethrough, Code, Sub/Superscript</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">📦 Block Types</h3>
+                    <p class="text-gray-400 text-sm">Headings, Lists, Checklists, Code Blocks, Quotes, Tables</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">🖼️ Image Upload</h3>
+                    <p class="text-gray-400 text-sm">URL + File upload with drag-and-drop resize</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">🎨 Font Customization</h3>
+                    <p class="text-gray-400 text-sm">Font family, size, color, and highlight</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">⌨️ Keyboard Shortcuts</h3>
+                    <p class="text-gray-400 text-sm">Tab indentation, standard formatting shortcuts</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">😀 Emoji Support</h3>
+                    <p class="text-gray-400 text-sm">Auto-replacement :) → 🙂</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Basic Usage -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">🚀 Basic Usage</h2>
+            <pre><code><span class="keyword">import</span> { <span class="component">RichTextEditor</span> } <span class="keyword">from</span> <span class="string">"@/components/ui/rich-text-editor"</span>;
+
+<span class="keyword">export default function</span> <span class="function">MyPage</span>() {
+  <span class="keyword">const</span> [content, setContent] = <span class="function">useState</span>(<span class="string">""</span>);
+
+  <span class="keyword">return</span> (
+    &lt;<span class="component">RichTextEditor</span>
+      <span class="function">value</span>={content}
+      <span class="function">onChange</span>={setContent}
+      <span class="function">placeholder</span>=<span class="string">"Start typing..."</span>
+    /&gt;
+  );
+}</code></pre>
+        </section>
+
+        <!-- Props -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">📋 Props</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="border-b border-gray-800">
+                            <th class="py-3 px-4">Prop</th>
+                            <th class="py-3 px-4">Type</th>
+                            <th class="py-3 px-4">Default</th>
+                            <th class="py-3 px-4">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-800">
+                            <td class="py-3 px-4"><code>value</code></td>
+                            <td class="py-3 px-4">string</td>
+                            <td class="py-3 px-4">""</td>
+                            <td class="py-3 px-4">Initial markdown content</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="py-3 px-4"><code>onChange</code></td>
+                            <td class="py-3 px-4">(value: string) => void</td>
+                            <td class="py-3 px-4">-</td>
+                            <td class="py-3 px-4">Called on every change</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="py-3 px-4"><code>placeholder</code></td>
+                            <td class="py-3 px-4">string</td>
+                            <td class="py-3 px-4">"Type / for commands..."</td>
+                            <td class="py-3 px-4">Placeholder text</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="py-3 px-4"><code>className</code></td>
+                            <td class="py-3 px-4">string</td>
+                            <td class="py-3 px-4">-</td>
+                            <td class="py-3 px-4">Additional CSS classes</td>
+                        </tr>
+                        <tr class="border-b border-gray-800">
+                            <td class="py-3 px-4"><code>editable</code></td>
+                            <td class="py-3 px-4">boolean</td>
+                            <td class="py-3 px-4">true</td>
+                            <td class="py-3 px-4">Enable/disable editing</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Keyboard Shortcuts -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">⌨️ Keyboard Shortcuts</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <code class="text-blue-400">Tab</code>
+                    <p class="text-gray-400 text-sm mt-1">Indent current line</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <code class="text-blue-400">Shift + Tab</code>
+                    <p class="text-gray-400 text-sm mt-1">Outdent current line</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <code class="text-blue-400">Ctrl/Cmd + B</code>
+                    <p class="text-gray-400 text-sm mt-1">Bold</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <code class="text-blue-400">Ctrl/Cmd + I</code>
+                    <p class="text-gray-400 text-sm mt-1">Italic</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <code class="text-blue-400">Ctrl/Cmd + U</code>
+                    <p class="text-gray-400 text-sm mt-1">Underline</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <code class="text-blue-400">Ctrl/Cmd + Z</code>
+                    <p class="text-gray-400 text-sm mt-1">Undo</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image Upload Setup -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">🖼️ Image Upload Setup</h2>
+
+            <h3 class="text-xl font-semibold mb-4">Step 1: Create API Route</h3>
+            <pre><code><span class="comment">// app/api/uploads/route.ts</span>
+<span class="keyword">import</span> { <span class="component">NextResponse</span> } <span class="keyword">from</span> <span class="string">"next/server"</span>;
+
+<span class="keyword">export async function</span> <span class="function">POST</span>(request: Request) {
+  <span class="keyword">const</span> formData = <span class="keyword">await</span> request.<span class="function">formData</span>();
+  <span class="keyword">const</span> file = formData.<span class="function">get</span>(<span class="string">"file"</span>) <span class="keyword">as</span> File;
+
+  <span class="comment">// Upload to your storage (Cloudinary, S3, etc.)</span>
+  <span class="keyword">const</span> url = <span class="keyword">await</span> <span class="function">uploadToStorage</span>(file);
+
+  <span class="keyword">return</span> <span class="component">NextResponse</span>.<span class="function">json</span>({ url });
+}</code></pre>
+
+            <h3 class="text-xl font-semibold mb-4 mt-8">Step 2: Cloudinary Example</h3>
+            <pre><code><span class="comment">// app/api/uploads/route.ts</span>
+<span class="keyword">import</span> { v2 <span class="keyword">as</span> cloudinary } <span class="keyword">from</span> <span class="string">"cloudinary"</span>;
+
+cloudinary.<span class="function">config</span>({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+<span class="keyword">export async function</span> <span class="function">POST</span>(request: Request) {
+  <span class="keyword">const</span> formData = <span class="keyword">await</span> request.<span class="function">formData</span>();
+  <span class="keyword">const</span> file = formData.<span class="function">get</span>(<span class="string">"file"</span>) <span class="keyword">as</span> File;
+
+  <span class="keyword">const</span> buffer = <span class="component">Buffer</span>.<span class="function">from</span>(<span class="keyword">await</span> file.<span class="function">arrayBuffer</span>());
+
+  <span class="keyword">const</span> result = <span class="keyword">await new</span> <span class="component">Promise</span>((resolve, reject) => {
+    cloudinary.uploader.<span class="function">upload_stream</span>(
+      { folder: <span class="string">"editor-uploads"</span> },
+      (error, result) => {
+        <span class="keyword">if</span> (error) <span class="function">reject</span>(error);
+        <span class="keyword">else</span> <span class="function">resolve</span>(result);
+      }
+    ).<span class="function">end</span>(buffer);
+  });
+
+  <span class="keyword">return</span> <span class="component">NextResponse</span>.<span class="function">json</span>({ url: result.secure_url });
+}</code></pre>
+
+            <h3 class="text-xl font-semibold mb-4 mt-8">Supported Formats</h3>
+            <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                <p class="mb-2"><strong>File Types:</strong> JPG, PNG, WebP, GIF</p>
+                <p><strong>Max Size:</strong> 500KB (configurable)</p>
+            </div>
+        </section>
+
+        <!-- Customization -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">🎨 Customization</h2>
+
+            <h3 class="text-xl font-semibold mb-4">Add New Block Format</h3>
+            <pre><code><span class="comment">// 1. Create component in plugins/toolbar/block-format/</span>
+<span class="comment">// 2. Import in index.tsx</span>
+<span class="comment">// 3. Add to &lt;BlockFormatDropDown&gt;</span>
+
+&lt;<span class="component">BlockFormatDropDown</span>&gt;
+  &lt;<span class="component">FormatParagraph</span> /&gt;
+  &lt;<span class="component">FormatHeading</span> levels={[<span class="string">"h1"</span>, <span class="string">"h2"</span>, <span class="string">"h3"</span>]} /&gt;
+  <span class="comment">{/* Your new format */}</span>
+  &lt;<span class="component">FormatCallout</span> /&gt;
+&lt;/<span class="component">BlockFormatDropDown</span>&gt;</code></pre>
+
+            <h3 class="text-xl font-semibold mb-4 mt-8">Add New Extension</h3>
+            <pre><code><span class="comment">// 1. Create component in extensions/</span>
+<span class="comment">// 2. Import in index.tsx</span>
+<span class="comment">// 3. Add inside &lt;LexicalComposer&gt;</span>
+
+&lt;<span class="component">LexicalComposer</span> initialConfig={initialConfig}&gt;
+  &lt;<span class="component">MentionsExtension</span> /&gt;  <span class="comment">{/* Your extension */}</span>
+  &lt;<span class="component">ToolbarPlugin</span>&gt;
+    ...
+  &lt;/<span class="component">ToolbarPlugin</span>&gt;
+&lt;/<span class="component">LexicalComposer</span>&gt;</code></pre>
+        </section>
+
+        <!-- Customization -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">⚙️ Customization Options</h2>
+
+            <h3 class="text-xl font-semibold mb-4">Read-Only Mode</h3>
+            <pre><code>&lt;<span class="component">RichTextEditor</span>
+  <span class="function">value</span>={savedContent}
+  <span class="function">editable</span>={<span class="keyword">false</span>}
+/&gt;</code></pre>
+
+            <h3 class="text-xl font-semibold mb-4 mt-8">Custom Placeholder</h3>
+            <pre><code>&lt;<span class="component">RichTextEditor</span>
+  <span class="function">placeholder</span>=<span class="string">"Write your story here..."</span>
+/&gt;</code></pre>
+
+            <h3 class="text-xl font-semibold mb-4 mt-8">Change Max Image Size</h3>
+            <pre><code><span class="comment">// registry/image-upload/image-upload-validation.ts</span>
+<span class="keyword">export const</span> MAX_IMAGE_UPLOAD_BYTES = <span class="string">1024 * 1024</span>; <span class="comment">// 1MB</span></code></pre>
+        </section>
+
+        <!-- Support -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">💬 Support</h2>
+            <div class="p-6 bg-gray-900 rounded-xl border border-gray-800">
+                <p class="mb-4">Found an issue? Have a feature request?</p>
+                <a href="https://github.com/alishpawn/new-portfolio/issues"
+                   class="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition-colors">
+                    Open an Issue on GitHub
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-500 pt-8 border-t border-gray-800">
+            <p>Built by <a href="https://alishpawn.com.np" class="text-blue-400 hover:underline">Alish Pawn</a></p>
+        </footer>
+    </div>
+</body>
+</html>

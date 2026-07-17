@@ -1,0 +1,240 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "shadcn-lexical-editor",
+  "homepage": "https://alishpawn.com.np",
+  "items": [
+    {
+      "name": "rich-text-editor",
+      "type": "registry:ui",
+      "title": "Rich Text Editor",
+      "description": "A rich text editor built with Lexical and Shadcn UI components.",
+      "dependencies": [
+        "lexical",
+        "@lexical/rich-text",
+        "@lexical/react",
+        "@lexical/list",
+        "@lexical/link",
+        "@lexical/code",
+        "@lexical/selection",
+        "@lexical/utils",
+        "@lexical/extension",
+        "@lexical/text",
+        "@lexical/markdown",
+        "@lexical/table",
+        "@lexical/mark",
+        "@lexical/overflow",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/index.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/context/toolbar-context.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/editor-hooks/use-update-toolbar.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/editor-hooks/use-modal.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/editor-ui/content-editable.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/editor-ui/image-component.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/editor-ui/image-resizer.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/editor-ui/color-picker.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/extensions/images-extension.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/extensions/emojis-extension.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/extensions/auto-link-extension.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/extensions/drag-drop-paste-extension.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/extensions/markdown-shortcuts-extension.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/extensions/max-length-extension.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/nodes/image-node.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/nodes/emoji-node.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/toolbar-plugin.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/block-format-toolbar-plugin.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/block-format/block-format-data.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/block-format/format-heading.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/block-format/format-paragraph.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/block-format/format-numbered-list.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/block-format/format-bulleted-list.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/block-format/format-check-list.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/block-format/format-code-block.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/block-format/format-quote.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/block-insert-plugin.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/block-insert/insert-image.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/block-insert/insert-horizontal-rule.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/block-insert/insert-table.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/font-format-toolbar-plugin.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/font-family-toolbar-plugin.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/font-size-toolbar-plugin.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/font-color-toolbar-plugin.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/font-background-toolbar-plugin.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/link-toolbar-plugin.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/element-format-toolbar-plugin.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/subsuper-toolbar-plugin.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/clear-formatting-toolbar-plugin.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/toolbar/history-toolbar-plugin.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/floating-text-format-plugin.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/floating-link-editor-plugin.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/plugins/actions/actions-plugin.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/utils/get-selected-node.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/utils/set-floating-elem-position.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/utils/set-floating-elem-position-for-link-editor.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/utils/get-dom-range-rect.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/utils/url.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/themes/editor-theme.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/themes/editor-theme.css",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/image-upload/upload-image-file.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/image-upload/image-upload-validation.ts",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}

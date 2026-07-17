@@ -33,6 +33,12 @@ This component requires shadcn/ui to be set up in your project. Make sure you ha
 Run this single command to install the editor:
 
 ```bash
+npx shadcn@latest add https://alishpawn.com.np/r/registry.json
+```
+
+Or from GitHub:
+
+```bash
 npx shadcn@latest add https://raw.githubusercontent.com/alishpawn/new-portfolio/main/registry.json
 ```
 
@@ -40,6 +46,11 @@ This will automatically:
 - ✅ Copy all editor files to `components/ui/rich-text-editor/`
 - ✅ Install all Lexical dependencies
 - ✅ Set up import paths correctly
+
+### 📖 Documentation
+
+For detailed guides, examples, and customization options, visit:
+**[https://alishpawn.com.np/shadcn-text-editor-guide](https://alishpawn.com.np/shadcn-text-editor-guide)**
 
 ### Usage
 
