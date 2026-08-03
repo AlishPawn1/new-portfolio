@@ -11,7 +11,8 @@
   ],
   "scripts": {
     "build": "tsc",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build:registry": "node scripts/build-registry.mjs"
   },
   "keywords": [
     "shadcn",

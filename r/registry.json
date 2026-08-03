@@ -235,6 +235,77 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "admin-auth",
+      "type": "registry:file",
+      "title": "NextAuth v5 Admin Auth + Prisma",
+      "description": "Full admin authentication for Next.js App Router: NextAuth v5 credentials, Prisma 7 (PostgreSQL via driver adapter), JWT sessions with isAdmin, guarded /admin routes, login page and admin seed.",
+      "author": "degaina-store",
+      "dependencies": [
+        "next-auth@beta",
+        "@prisma/client",
+        "@prisma/adapter-pg",
+        "pg",
+        "bcryptjs"
+      ],
+      "devDependencies": [
+        "prisma",
+        "tsx",
+        "dotenv",
+        "@types/pg",
+        "@types/bcryptjs"
+      ],
+      "files": [
+        {
+          "path": "registry/admin-auth/auth.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "registry/admin-auth/lib/prisma.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "registry/admin-auth/types/next-auth.d.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "registry/admin-auth/app/api/auth/[...nextauth]/route.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "registry/admin-auth/app/login/page.tsx",
+          "type": "registry:file"
+        },
+        {
+          "path": "registry/admin-auth/app/admin/layout.tsx",
+          "type": "registry:file"
+        },
+        {
+          "path": "registry/admin-auth/app/admin/page.tsx",
+          "type": "registry:file"
+        },
+        {
+          "path": "registry/admin-auth/app/admin/AdminNav.tsx",
+          "type": "registry:file"
+        },
+        {
+          "path": "registry/admin-auth/app/page.tsx",
+          "type": "registry:file"
+        },
+        {
+          "path": "registry/admin-auth/prisma/schema.prisma",
+          "type": "registry:file"
+        },
+        {
+          "path": "registry/admin-auth/prisma/seed.ts",
+          "type": "registry:file"
+        },
+        {
+          "path": "registry/admin-auth/prisma.config.ts",
+          "type": "registry:file"
+        }
+      ]
     }
   ]
 }

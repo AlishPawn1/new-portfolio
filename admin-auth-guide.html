@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadcn Admin Auth - Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        pre code {
+            display: block;
+            padding: 1rem;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        .keyword { color: #569cd6; }
+        .string { color: #ce9178; }
+        .comment { color: #6a9955; }
+        .function { color: #dcdcaa; }
+        .component { color: #4ec9b0; }
+        .number { color: #b5cea8; }
+        .tag { color: #569cd6; }
+        .attr { color: #9cdcfe; }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-100">
+    <div class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Header -->
+        <header class="mb-12">
+            <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-emerald-400 to-cyan-500 bg-clip-text text-transparent">
+                Shadcn Admin Auth
+            </h1>
+            <p class="text-xl text-gray-400">
+                NextAuth v5 + Prisma 7 admin authentication for Next.js App Router, installed with one command
+            </p>
+        </header>
+
+        <!-- Quick Install -->
+        <section class="mb-12 p-6 bg-gray-900 rounded-xl border border-gray-800">
+            <h2 class="text-2xl font-semibold mb-4">⚡ Quick Install</h2>
+            <pre><code><span class="comment"># Install the whole auth setup in a fresh Next.js project</span>
+npx shadcn@latest add https://www.alishpawn.com.np/r/admin-auth.json -y -o
+
+<span class="comment"># Then: create your database schema and admin user</span>
+npx prisma generate
+npx prisma migrate dev --name init
+npx prisma db seed
+
+<span class="comment"># Start the app and open /admin</span>
+npm run dev</code></pre>
+            <p class="mt-4 text-sm text-gray-400">
+                Open <code class="text-emerald-400">http://localhost:3000/admin</code> and sign in with
+                <code class="text-emerald-400">ADMIN_EMAIL</code> / <code class="text-emerald-400">ADMIN_PASSWORD</code>
+                (defaults: <code class="text-emerald-400">admin@degaina.com</code> / <code class="text-emerald-400">admin12345</code>).
+            </p>
+        </section>
+
+        <!-- Features -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">✨ Features</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">🔐 NextAuth v5</h3>
+                    <p class="text-gray-400 text-sm">Credentials provider, JWT sessions, custom sign-in page</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">🗄️ Prisma 7</h3>
+                    <p class="text-gray-400 text-sm">PostgreSQL via driver adapter (<code>@prisma/adapter-pg</code>)</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">🛡️ Guarded /admin</h3>
+                    <p class="text-gray-400 text-sm">Layout-level redirect for unauthenticated and non-admin users</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">👤 isAdmin claim</h3>
+                    <p class="text-gray-400 text-sm">Admin flag persisted through the JWT into the session</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">🌱 Admin seed</h3>
+                    <p class="text-gray-400 text-sm">One command creates the admin user from your .env</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">🔑 Password hashing</h3>
+                    <p class="text-gray-400 text-sm">bcryptjs hashes stored passwords, never plaintext</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">👁️ Show/hide password</h3>
+                    <p class="text-gray-400 text-sm">Login form with a toggleable password field and error state</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">↩️ callbackUrl support</h3>
+                    <p class="text-gray-400 text-sm">Returns users to the page they tried to visit</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prerequisites -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">📋 Prerequisites</h2>
+            <ul class="list-disc list-inside space-y-2 text-gray-400">
+                <li>A Next.js App Router project (TypeScript)</li>
+                <li>Tailwind CSS (v3 or v4)</li>
+                <li>A running PostgreSQL database</li>
+                <li>Node.js 18+</li>
+            </ul>
+            <p class="mt-4 text-sm text-gray-400">
+                No <code class="text-emerald-400">shadcn init</code> is required — the item is
+                <em>universal</em>, so it installs into any project directly.
+            </p>
+        </section>
+
+        <!-- What gets installed -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">📁 What gets installed</h2>
+            <pre><code><span class="comment"># Auth configuration</span>
+auth.ts                                <span class="comment"># NextAuth handlers, signIn, signOut, auth</span>
+app/api/auth/[...nextauth]/route.ts    <span class="comment"># API route exposing GET/POST</span>
+types/next-auth.d.ts                   <span class="comment"># Session/User/JWT type augmentation</span>
+
+<span class="comment"># UI</span>
+app/login/page.tsx                     <span class="comment"># Sign-in form (show/hide password)</span>
+app/admin/layout.tsx                   <span class="comment"># Guard: redirects unauthenticated users</span>
+app/admin/page.tsx                     <span class="comment"># Admin dashboard</span>
+app/admin/AdminNav.tsx                 <span class="comment"># Nav with sign-out button</span>
+app/page.tsx                           <span class="comment"># Landing page with a Sign in link</span>
+
+<span class="comment"># Database</span>
+lib/prisma.ts                          <span class="comment"># PrismaClient singleton (driver adapter)</span>
+prisma/schema.prisma                   <span class="comment"># User model</span>
+prisma/seed.ts                         <span class="comment"># Admin upsert from env vars</span>
+prisma.config.ts                       <span class="comment"># Prisma 7 config (datasource, seed command)</span>
+
+<span class="comment"># Environment</span>
+.env                                   <span class="comment"># DATABASE_URL, AUTH_SECRET, ADMIN_*</span></code></pre>
+        </section>
+
+        <!-- Environment -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">🔧 Environment Variables</h2>
+            <p class="text-gray-400 mb-4">Your <code class="text-emerald-400">.env</code> is created during install:</p>
+            <pre><code><span class="comment"># Database</span>
+DATABASE_URL=<span class="string">"postgresql://postgres:password@localhost:5432/mydb?schema=public"</span>
+
+<span class="comment"># Auth.js (session signing key - regenerate with: npx auth secret)</span>
+AUTH_SECRET=<span class="string">"your-random-secret"</span>
+
+<span class="comment"># Admin seed user</span>
+ADMIN_EMAIL=<span class="string">"admin@degaina.com"</span>
+ADMIN_PASSWORD=<span class="string">"admin12345"</span>
+ADMIN_NAME=<span class="string">"Admin"</span></code></pre>
+            <p class="mt-4 text-sm text-gray-400">
+                ⚠️ Change <code class="text-emerald-400">ADMIN_PASSWORD</code> and
+                <code class="text-emerald-400">AUTH_SECRET</code> before deploying anywhere public.
+            </p>
+        </section>
+
+        <!-- How it works -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">🔍 How it works</h2>
+
+            <h3 class="text-xl font-semibold mb-3">1. auth.ts — the NextAuth config</h3>
+            <pre><code><span class="keyword">import</span> <span class="component">NextAuth</span> <span class="keyword">from</span> <span class="string">"next-auth"</span>;
+<span class="keyword">import</span> <span class="component">Credentials</span> <span class="keyword">from</span> <span class="string">"next-auth/providers/credentials"</span>;
+<span class="keyword">import</span> bcrypt <span class="keyword">from</span> <span class="string">"bcryptjs"</span>;
+<span class="keyword">import</span> { prisma } <span class="keyword">from</span> <span class="string">"@/lib/prisma"</span>;
+
+<span class="keyword">export const</span> { handlers, signIn, signOut, auth } = <span class="component">NextAuth</span>({
+  session: { strategy: <span class="string">"jwt"</span> },
+  providers: [
+    <span class="component">Credentials</span>({
+      credentials: {
+        email: { label: <span class="string">"Email"</span>, type: <span class="string">"email"</span> },
+        password: { label: <span class="string">"Password"</span>, type: <span class="string">"password"</span> },
+      },
+      <span class="function">authorize</span>: <span class="keyword">async</span> (credentials) =&gt; {
+        <span class="keyword">const</span> email = credentials?.email;
+        <span class="keyword">const</span> password = credentials?.password;
+        <span class="keyword">if</span> (!email || !password) <span class="keyword">return null</span>;
+
+        <span class="keyword">const</span> user = <span class="keyword">await</span> prisma.user.findUnique({ where: { email } });
+        <span class="keyword">if</span> (!user) <span class="keyword">return null</span>;
+
+        <span class="keyword">const</span> valid = <span class="keyword">await</span> bcrypt.compare(password, user.passwordHash);
+        <span class="keyword">if</span> (!valid) <span class="keyword">return null</span>;
+
+        <span class="keyword">return</span> { id: user.id, email: user.email, name: user.name, isAdmin: user.isAdmin };
+      },
+    }),
+  ],
+  callbacks: {
+    <span class="function">jwt</span>({ token, user }) {
+      <span class="keyword">if</span> (user) token.isAdmin = user.isAdmin;
+      <span class="keyword">return</span> token;
+    },
+    <span class="function">session</span>({ session, token }) {
+      <span class="keyword">if</span> (token.isAdmin) session.user.isAdmin = token.isAdmin;
+      <span class="keyword">return</span> session;
+    },
+  },
+  pages: { signIn: <span class="string">"/login"</span> },
+});</code></pre>
+
+            <h3 class="text-xl font-semibold mb-3 mt-8">2. Guarding the admin section</h3>
+            <p class="text-gray-400 mb-4">
+                <code class="text-emerald-400">app/admin/layout.tsx</code> runs on every request. No session
+                &rarr; redirect to <code class="text-emerald-400">/login</code>. Logged in but not an admin &rarr; redirect to <code class="text-emerald-400">/</code>.
+            </p>
+            <pre><code><span class="keyword">import</span> { redirect } <span class="keyword">from</span> <span class="string">"next/navigation"</span>;
+<span class="keyword">import</span> { auth } <span class="keyword">from</span> <span class="string">"@/auth"</span>;
+<span class="keyword">import</span> <span class="component">AdminNav</span> <span class="keyword">from</span> <span class="string">"./AdminNav"</span>;
+
+<span class="keyword">export default async function</span> <span class="function">AdminLayout</span>({ children }) {
+  <span class="keyword">const</span> session = <span class="keyword">await</span> auth();
+
+  <span class="keyword">if</span> (!session?.user) redirect(<span class="string">"/login"</span>);
+  <span class="keyword">if</span> (!session.user.isAdmin) redirect(<span class="string">"/"</span>);
+
+  <span class="keyword">return</span> (
+    <span class="component">&lt;div</span> className=<span class="string">"min-h-screen bg-zinc-50"</span><span class="component">&gt;</span>
+      <span class="component">&lt;AdminNav /&gt;</span>
+      <span class="component">&lt;main</span> className=<span class="string">"mx-auto max-w-6xl px-6 py-8"</span><span class="component">&gt;</span>{children}<span class="component">&lt;/main&gt;</span>
+    <span class="component">&lt;/div&gt;</span>
+  );
+}</code></pre>
+
+            <h3 class="text-xl font-semibold mb-3 mt-8">3. Signing in</h3>
+            <p class="text-gray-400 mb-4">
+                The client-side form calls <code class="text-emerald-400">signIn("credentials", ...)</code> and
+                redirects to <code class="text-emerald-400">callbackUrl</code> on success.
+            </p>
+            <pre><code><span class="keyword">const</span> result = <span class="keyword">await</span> signIn(<span class="string">"credentials"</span>, {
+  email: formData.get(<span class="string">"email"</span>),
+  password: formData.get(<span class="string">"password"</span>),
+  redirect: <span class="keyword">false</span>,
+});
+
+<span class="keyword">if</span> (result?.error) {
+  setError(<span class="string">"Invalid email or password."</span>);
+  <span class="keyword">return</span>;
+}
+
+router.push(callbackUrl);
+router.refresh();</code></pre>
+        </section>
+
+        <!-- Database -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">🗄️ Database schema</h2>
+            <pre><code><span class="keyword">generator</span> client {
+  provider = <span class="string">"prisma-client"</span>
+  output   = <span class="string">"../app/generated/prisma"</span>
+}
+
+<span class="keyword">datasource</span> db {
+  provider = <span class="string">"postgresql"</span>
+}
+
+<span class="keyword">model</span> <span class="component">User</span> {
+  id           String   <span class="attr">@id</span> <span class="attr">@default</span>(cuid())
+  email        String   <span class="attr">@unique</span>
+  name         String?
+  passwordHash String
+  isAdmin      Boolean  <span class="attr">@default</span>(<span class="function">false</span>)
+  createdAt    DateTime <span class="attr">@default</span>(now())
+  updatedAt    DateTime <span class="attr">@updatedAt</span>
+}</code></pre>
+        </section>
+
+        <!-- Customization -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">🎛️ Customization</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">Change the admin route</h3>
+                    <p class="text-gray-400 text-sm">Rename <code class="text-emerald-400">app/admin/</code> and update the guard + nav links.</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">Require email verification</h3>
+                    <p class="text-gray-400 text-sm">Add <code class="text-emerald-400">emailVerified</code> to the User model and check it in <code class="text-emerald-400">authorize</code>.</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">Add OAuth (Google, GitHub)</h3>
+                    <p class="text-gray-400 text-sm">Add providers to <code class="text-emerald-400">auth.ts</code> and a <code class="text-emerald-400">PrismaAdapter</code>.</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">Protect the whole app</h3>
+                    <p class="text-gray-400 text-sm">Move the <code class="text-emerald-400">auth()</code> check into your root <code class="text-emerald-400">app/layout.tsx</code> or a middleware.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Troubleshooting -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">🐛 Troubleshooting</h2>
+            <div class="space-y-4">
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">🔑 AUTH_SECRET missing at runtime</h3>
+                    <p class="text-gray-400 text-sm">NextAuth requires <code class="text-emerald-400">AUTH_SECRET</code>. Generate one with <code class="text-emerald-400">npx auth secret</code> and add it to your <code class="text-emerald-400">.env</code>.</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">🐘 prisma: database does not exist</h3>
+                    <p class="text-gray-400 text-sm">Create the database first (<code class="text-emerald-400">createdb mydb</code> or via your Postgres client), then re-run <code class="text-emerald-400">npx prisma migrate dev</code>.</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">🚫 Invalid login</h3>
+                    <p class="text-gray-400 text-sm">Ensure the seed ran (<code class="text-emerald-400">npx prisma db seed</code>) and that <code class="text-emerald-400">ADMIN_EMAIL</code> / <code class="text-emerald-400">ADMIN_PASSWORD</code> in <code class="text-emerald-400">.env</code> match what you type.</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">🛑 Redirect loop on /admin</h3>
+                    <p class="text-gray-400 text-sm">Make sure the signed-in user has <code class="text-emerald-400">isAdmin: true</code> in the database, otherwise the layout redirects to <code class="text-emerald-400">/</code>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-16 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+            <p>
+                Part of the shadcn registry · <a href="https://ui.shadcn.com/docs/registry" class="text-emerald-400 hover:underline">Registry docs</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -47,10 +47,42 @@ This will automatically:
 - ✅ Install all Lexical dependencies
 - ✅ Set up import paths correctly
 
+### Admin Auth (One-Line Install)
+
+Install a complete NextAuth v5 + Prisma admin authentication setup (sign-in page, guarded `/admin`, JWT with `isAdmin`, admin seed) into any fresh Next.js App Router project:
+
+```bash
+npx shadcn@latest add https://www.alishpawn.com.np/r/admin-auth.json -y -o
+```
+
+Or from GitHub:
+
+```bash
+npx shadcn@latest add https://raw.githubusercontent.com/alishpawn/new-portfolio/main/r/admin-auth.json
+```
+
+This will automatically:
+- ✅ Install `next-auth@beta`, Prisma 7, `@prisma/adapter-pg`, `pg`, `bcryptjs`
+- ✅ Create `auth.ts`, `/api/auth/[...nextauth]`, `/login`, `/admin`, `prisma/schema.prisma`, `prisma/seed.ts`, `prisma.config.ts`, `.env`
+
+Then:
+
+```bash
+npx prisma generate
+npx prisma migrate dev --name init
+npx prisma db seed
+npm run dev
+```
+
+Open `http://localhost:3000/admin` and sign in with `ADMIN_EMAIL` / `ADMIN_PASSWORD` (defaults seeded from `.env`).
+
+> **Note:** the current shadcn CLI installs a single registry *item* from a URL. The one-liner targets the built `r/admin-auth.json`. The `r/registry.json` catalog (used by `npx shadcn list` / `search`) contains both items. Regenerate the built item after editing `registry/admin-auth/` with `npm run build:registry`.
+
 ### 📖 Documentation
 
 For detailed guides, examples, and customization options, visit:
 - **[Text Editor Guide](https://www.alishpawn.com.np/shadcn-text-editor-guide.html)** - Complete editor documentation
+- **[Admin Auth Guide](https://www.alishpawn.com.np/admin-auth-guide.html)** - NextAuth v5 + Prisma admin authentication setup
 - **[Payment Integration Guide](https://www.alishpawn.com.np/payment-integration-guide.html)** - Stripe & Khalti setup
 
 ### Usage

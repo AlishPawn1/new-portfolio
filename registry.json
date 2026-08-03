@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "shadcn-lexical-editor",
-  "homepage": "https://github.com/your-username/shadcn-lexical-editor",
+  "homepage": "https://alishpawn.com.np",
   "items": [
     {
       "name": "rich-text-editor",
@@ -76,6 +76,41 @@
         "registry/themes/editor-theme.css",
         "registry/image-upload/upload-image-file.ts",
         "registry/image-upload/image-upload-validation.ts"
+      ]
+    },
+    {
+      "name": "admin-auth",
+      "type": "registry:file",
+      "title": "NextAuth v5 Admin Auth + Prisma",
+      "description": "Full admin authentication for Next.js App Router: NextAuth v5 credentials, Prisma 7 (PostgreSQL via driver adapter), JWT sessions with isAdmin, guarded /admin routes, login page and admin seed.",
+      "author": "degaina-store",
+      "dependencies": [
+        "next-auth@beta",
+        "@prisma/client",
+        "@prisma/adapter-pg",
+        "pg",
+        "bcryptjs"
+      ],
+      "devDependencies": [
+        "prisma",
+        "tsx",
+        "dotenv",
+        "@types/pg",
+        "@types/bcryptjs"
+      ],
+      "files": [
+        "registry/admin-auth/auth.ts",
+        "registry/admin-auth/lib/prisma.ts",
+        "registry/admin-auth/types/next-auth.d.ts",
+        "registry/admin-auth/app/api/auth/[...nextauth]/route.ts",
+        "registry/admin-auth/app/login/page.tsx",
+        "registry/admin-auth/app/admin/layout.tsx",
+        "registry/admin-auth/app/admin/page.tsx",
+        "registry/admin-auth/app/admin/AdminNav.tsx",
+        "registry/admin-auth/app/page.tsx",
+        "registry/admin-auth/prisma/schema.prisma",
+        "registry/admin-auth/prisma/seed.ts",
+        "registry/admin-auth/prisma.config.ts"
       ]
     }
   ]
