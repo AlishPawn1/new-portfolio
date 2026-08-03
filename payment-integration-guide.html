@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Integration Guide - Stripe & Khalti</title>
+    <link rel="icon" href="image/image.png" type="image/png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         pre code {
@@ -27,7 +28,7 @@
         <!-- Header -->
         <header class="mb-12">
             <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
-                💳 Payment Integration Guide
+                ðŸ’³ Payment Integration Guide
             </h1>
             <p class="text-xl text-gray-400">
                 Stripe & Khalti integration for MERN stack ecommerce applications
@@ -41,7 +42,7 @@
 
         <!-- Quick Start -->
         <section class="mb-12 p-6 bg-gray-900 rounded-xl border border-gray-800">
-            <h2 class="text-2xl font-semibold mb-4">⚡ Quick Start</h2>
+            <h2 class="text-2xl font-semibold mb-4">âš¡ Quick Start</h2>
             <pre><code><span class="comment"># Install dependencies</span>
 npm install stripe axios
 
@@ -51,22 +52,22 @@ cp .env.example .env</code></pre>
 
         <!-- Features -->
         <section class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6">✨ Features</h2>
+            <h2 class="text-2xl font-semibold mb-6">âœ¨ Features</h2>
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
-                    <h3 class="font-semibold mb-2">🌍 Stripe Integration</h3>
+                    <h3 class="font-semibold mb-2">ðŸŒ Stripe Integration</h3>
                     <p class="text-gray-400 text-sm">International payments with credit/debit cards, 135+ countries</p>
                 </div>
                 <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
-                    <h3 class="font-semibold mb-2">📱 Khalti Integration</h3>
+                    <h3 class="font-semibold mb-2">ðŸ“± Khalti Integration</h3>
                     <p class="text-gray-400 text-sm">Local Nepali digital wallet payments, 2M+ users</p>
                 </div>
                 <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
-                    <h3 class="font-semibold mb-2">🔒 Webhook Handling</h3>
+                    <h3 class="font-semibold mb-2">ðŸ”’ Webhook Handling</h3>
                     <p class="text-gray-400 text-sm">Automatic payment verification and order updates</p>
                 </div>
                 <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
-                    <h3 class="font-semibold mb-2">🧪 Test Mode</h3>
+                    <h3 class="font-semibold mb-2">ðŸ§ª Test Mode</h3>
                     <p class="text-gray-400 text-sm">Sandbox environment for testing before going live</p>
                 </div>
             </div>
@@ -74,22 +75,22 @@ cp .env.example .env</code></pre>
 
         <!-- Architecture -->
         <section class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6">🏗️ Architecture</h2>
+            <h2 class="text-2xl font-semibold mb-6">ðŸ—ï¸ Architecture</h2>
             <div class="p-6 bg-gray-900 rounded-xl border border-gray-800">
-                <pre><code>┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Frontend      │    │    Backend      │    │   Payment       │
-│   (React)       │◄──►│   (Node.js)     │◄──►│   Gateways      │
-│                 │    │                 │    │                 │
-│ • Payment UI    │    │ • Order Mgmt    │    │ • Stripe        │
-│ • User Flow     │    │ • Payment API   │    │ • Khalti        │
-│ • Verification  │    │ • Webhooks      │    │ • Webhooks      │
-└─────────────────┘    └─────────────────┘    └─────────────────┘</code></pre>
+                <pre><code>â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”    â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”    â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+â”‚   Frontend      â”‚    â”‚    Backend      â”‚    â”‚   Payment       â”‚
+â”‚   (React)       â”‚â—„â”€â”€â–ºâ”‚   (Node.js)     â”‚â—„â”€â”€â–ºâ”‚   Gateways      â”‚
+â”‚                 â”‚    â”‚                 â”‚    â”‚                 â”‚
+â”‚ â€¢ Payment UI    â”‚    â”‚ â€¢ Order Mgmt    â”‚    â”‚ â€¢ Stripe        â”‚
+â”‚ â€¢ User Flow     â”‚    â”‚ â€¢ Payment API   â”‚    â”‚ â€¢ Khalti        â”‚
+â”‚ â€¢ Verification  â”‚    â”‚ â€¢ Webhooks      â”‚    â”‚ â€¢ Webhooks      â”‚
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜    â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜    â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜</code></pre>
             </div>
         </section>
 
         <!-- Stripe Setup -->
         <section class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6">💳 Stripe Integration</h2>
+            <h2 class="text-2xl font-semibold mb-6">ðŸ’³ Stripe Integration</h2>
 
             <h3 class="text-xl font-semibold mb-4">Step 1: Install Package</h3>
             <pre><code>npm install stripe</code></pre>
@@ -160,7 +161,7 @@ cp .env.example .env</code></pre>
 
         <!-- Khalti Setup -->
         <section class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6">📱 Khalti Integration</h2>
+            <h2 class="text-2xl font-semibold mb-6">ðŸ“± Khalti Integration</h2>
 
             <h3 class="text-xl font-semibold mb-4">Step 1: Install Package</h3>
             <pre><code>npm install axios</code></pre>
@@ -250,7 +251,7 @@ cp .env.example .env</code></pre>
 
         <!-- Frontend Integration -->
         <section class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6">🎨 Frontend Integration</h2>
+            <h2 class="text-2xl font-semibold mb-6">ðŸŽ¨ Frontend Integration</h2>
 
             <h3 class="text-xl font-semibold mb-4">Payment Selection Component</h3>
             <pre><code><span class="comment">// components/PaymentSelection.jsx</span>
@@ -291,7 +292,7 @@ cp .env.example .env</code></pre>
           checked={paymentMethod === <span class="string">"stripe"</span>}
           onChange={(e) => <span class="function">setPaymentMethod</span>(e.target.value)}
         /&gt;
-        💳 Credit/Debit Card (Stripe)
+        ðŸ’³ Credit/Debit Card (Stripe)
       &lt;/<span class="component">label</span>&gt;
 
       &lt;<span class="component">label</span>&gt;
@@ -301,7 +302,7 @@ cp .env.example .env</code></pre>
           checked={paymentMethod === <span class="string">"khalti"</span>}
           onChange={(e) => <span class="function">setPaymentMethod</span>(e.target.value)}
         /&gt;
-        📱 Khalti Digital Wallet
+        ðŸ“± Khalti Digital Wallet
       &lt;/<span class="component">label</span>&gt;
 
       &lt;<span class="component">button</span>
@@ -318,7 +319,7 @@ cp .env.example .env</code></pre>
 
         <!-- API Routes -->
         <section class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6">🔌 API Routes</h2>
+            <h2 class="text-2xl font-semibold mb-6">ðŸ”Œ API Routes</h2>
 
             <h3 class="text-xl font-semibold mb-4">Next.js Example</h3>
             <pre><code><span class="comment">// app/api/order/stripe/route.js</span>
@@ -351,7 +352,7 @@ cp .env.example .env</code></pre>
 
         <!-- Testing -->
         <section class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6">🧪 Testing</h2>
+            <h2 class="text-2xl font-semibold mb-6">ðŸ§ª Testing</h2>
 
             <h3 class="text-xl font-semibold mb-4">Stripe Test Cards</h3>
             <div class="overflow-x-auto">
@@ -365,15 +366,15 @@ cp .env.example .env</code></pre>
                     <tbody>
                         <tr class="border-b border-gray-800">
                             <td class="py-3 px-4"><code>4242 4242 4242 4242</code></td>
-                            <td class="py-3 px-4">✅ Success</td>
+                            <td class="py-3 px-4">âœ… Success</td>
                         </tr>
                         <tr class="border-b border-gray-800">
                             <td class="py-3 px-4"><code>4000 0000 0000 0002</code></td>
-                            <td class="py-3 px-4">❌ Declined</td>
+                            <td class="py-3 px-4">âŒ Declined</td>
                         </tr>
                         <tr class="border-b border-gray-800">
                             <td class="py-3 px-4"><code>4000 0025 0000 3155</code></td>
-                            <td class="py-3 px-4">🔐 Requires 3D Secure</td>
+                            <td class="py-3 px-4">ðŸ” Requires 3D Secure</td>
                         </tr>
                     </tbody>
                 </table>
@@ -388,7 +389,7 @@ cp .env.example .env</code></pre>
 
         <!-- Environment Variables -->
         <section class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6">⚙️ Environment Variables</h2>
+            <h2 class="text-2xl font-semibold mb-6">âš™ï¸ Environment Variables</h2>
             <pre><code><span class="comment"># .env</span>
 
 <span class="comment"># Stripe</span>
@@ -406,19 +407,19 @@ cp .env.example .env</code></pre>
 
         <!-- Troubleshooting -->
         <section class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6">🔧 Troubleshooting</h2>
+            <h2 class="text-2xl font-semibold mb-6">ðŸ”§ Troubleshooting</h2>
 
             <div class="space-y-4">
                 <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
-                    <h3 class="font-semibold mb-2">❌ "Invalid API key"</h3>
+                    <h3 class="font-semibold mb-2">âŒ "Invalid API key"</h3>
                     <p class="text-gray-400 text-sm">Check your environment variables are correct and server is restarted</p>
                 </div>
                 <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
-                    <h3 class="font-semibold mb-2">❌ "Amount must be at least 50"</h3>
+                    <h3 class="font-semibold mb-2">âŒ "Amount must be at least 50"</h3>
                     <p class="text-gray-400 text-sm">Minimum amount for Khalti is 50 NPR (5000 paisa)</p>
                 </div>
                 <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
-                    <h3 class="font-semibold mb-2">❌ "Webhook not received"</h3>
+                    <h3 class="font-semibold mb-2">âŒ "Webhook not received"</h3>
                     <p class="text-gray-400 text-sm">Use ngrok for local testing: <code>ngrok http 3000</code></p>
                 </div>
             </div>
@@ -426,7 +427,7 @@ cp .env.example .env</code></pre>
 
         <!-- Support -->
         <section class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6">💬 Support</h2>
+            <h2 class="text-2xl font-semibold mb-6">ðŸ’¬ Support</h2>
             <div class="p-6 bg-gray-900 rounded-xl border border-gray-800">
                 <p class="mb-4">Found an issue? Have a question?</p>
                 <a href="https://github.com/alishpawn/new-portfolio/issues"
@@ -443,3 +444,4 @@ cp .env.example .env</code></pre>
     </div>
 </body>
 </html>
+

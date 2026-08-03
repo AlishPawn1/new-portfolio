@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shadcn Lexical Editor - Guide</title>
+    <link rel="icon" href="image/image.png" type="image/png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         pre code {
@@ -35,45 +36,45 @@
 
         <!-- Quick Install -->
         <section class="mb-12 p-6 bg-gray-900 rounded-xl border border-gray-800">
-            <h2 class="text-2xl font-semibold mb-4">⚡ Quick Install</h2>
+            <h2 class="text-2xl font-semibold mb-4">âš¡ Quick Install</h2>
             <pre><code><span class="comment"># Install with one command</span>
 npx shadcn@latest add https://alishpawn.com.np/r/registry.json</code></pre>
         </section>
 
         <!-- Features -->
         <section class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6">✨ Features</h2>
+            <h2 class="text-2xl font-semibold mb-6">âœ¨ Features</h2>
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
-                    <h3 class="font-semibold mb-2">📝 Text Formatting</h3>
+                    <h3 class="font-semibold mb-2">ðŸ“ Text Formatting</h3>
                     <p class="text-gray-400 text-sm">Bold, Italic, Underline, Strikethrough, Code, Sub/Superscript</p>
                 </div>
                 <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
-                    <h3 class="font-semibold mb-2">📦 Block Types</h3>
+                    <h3 class="font-semibold mb-2">ðŸ“¦ Block Types</h3>
                     <p class="text-gray-400 text-sm">Headings, Lists, Checklists, Code Blocks, Quotes, Tables</p>
                 </div>
                 <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
-                    <h3 class="font-semibold mb-2">🖼️ Image Upload</h3>
+                    <h3 class="font-semibold mb-2">ðŸ–¼ï¸ Image Upload</h3>
                     <p class="text-gray-400 text-sm">URL + File upload with drag-and-drop resize</p>
                 </div>
                 <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
-                    <h3 class="font-semibold mb-2">🎨 Font Customization</h3>
+                    <h3 class="font-semibold mb-2">ðŸŽ¨ Font Customization</h3>
                     <p class="text-gray-400 text-sm">Font family, size, color, and highlight</p>
                 </div>
                 <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
-                    <h3 class="font-semibold mb-2">⌨️ Keyboard Shortcuts</h3>
+                    <h3 class="font-semibold mb-2">âŒ¨ï¸ Keyboard Shortcuts</h3>
                     <p class="text-gray-400 text-sm">Tab indentation, standard formatting shortcuts</p>
                 </div>
                 <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
-                    <h3 class="font-semibold mb-2">😀 Emoji Support</h3>
-                    <p class="text-gray-400 text-sm">Auto-replacement :) → 🙂</p>
+                    <h3 class="font-semibold mb-2">ðŸ˜€ Emoji Support</h3>
+                    <p class="text-gray-400 text-sm">Auto-replacement :) â†’ ðŸ™‚</p>
                 </div>
             </div>
         </section>
 
         <!-- Basic Usage -->
         <section class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6">🚀 Basic Usage</h2>
+            <h2 class="text-2xl font-semibold mb-6">ðŸš€ Basic Usage</h2>
             <pre><code><span class="keyword">import</span> { <span class="component">RichTextEditor</span> } <span class="keyword">from</span> <span class="string">"@/components/ui/rich-text-editor"</span>;
 
 <span class="keyword">export default function</span> <span class="function">MyPage</span>() {
@@ -91,7 +92,7 @@ npx shadcn@latest add https://alishpawn.com.np/r/registry.json</code></pre>
 
         <!-- Props -->
         <section class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6">📋 Props</h2>
+            <h2 class="text-2xl font-semibold mb-6">ðŸ“‹ Props</h2>
             <div class="overflow-x-auto">
                 <table class="w-full text-left">
                     <thead>
@@ -140,7 +141,7 @@ npx shadcn@latest add https://alishpawn.com.np/r/registry.json</code></pre>
 
         <!-- Keyboard Shortcuts -->
         <section class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6">⌨️ Keyboard Shortcuts</h2>
+            <h2 class="text-2xl font-semibold mb-6">âŒ¨ï¸ Keyboard Shortcuts</h2>
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
                     <code class="text-blue-400">Tab</code>
@@ -171,7 +172,7 @@ npx shadcn@latest add https://alishpawn.com.np/r/registry.json</code></pre>
 
         <!-- Image Upload Setup -->
         <section class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6">🖼️ Image Upload Setup</h2>
+            <h2 class="text-2xl font-semibold mb-6">ðŸ–¼ï¸ Image Upload Setup</h2>
 
             <h3 class="text-xl font-semibold mb-4">Step 1: Create API Route</h3>
             <pre><code><span class="comment">// app/api/uploads/route.ts</span>
@@ -225,7 +226,7 @@ cloudinary.<span class="function">config</span>({
 
         <!-- Customization -->
         <section class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6">🎨 Customization</h2>
+            <h2 class="text-2xl font-semibold mb-6">ðŸŽ¨ Customization</h2>
 
             <h3 class="text-xl font-semibold mb-4">Add New Block Format</h3>
             <pre><code><span class="comment">// 1. Create component in plugins/toolbar/block-format/</span>
@@ -254,7 +255,7 @@ cloudinary.<span class="function">config</span>({
 
         <!-- Customization -->
         <section class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6">⚙️ Customization Options</h2>
+            <h2 class="text-2xl font-semibold mb-6">âš™ï¸ Customization Options</h2>
 
             <h3 class="text-xl font-semibold mb-4">Read-Only Mode</h3>
             <pre><code>&lt;<span class="component">RichTextEditor</span>
@@ -274,7 +275,7 @@ cloudinary.<span class="function">config</span>({
 
         <!-- Support -->
         <section class="mb-12">
-            <h2 class="text-2xl font-semibold mb-6">💬 Support</h2>
+            <h2 class="text-2xl font-semibold mb-6">ðŸ’¬ Support</h2>
             <div class="p-6 bg-gray-900 rounded-xl border border-gray-800">
                 <p class="mb-4">Found an issue? Have a feature request?</p>
                 <a href="https://github.com/alishpawn/new-portfolio/issues"
@@ -291,3 +292,4 @@ cloudinary.<span class="function">config</span>({
     </div>
 </body>
 </html>
+
