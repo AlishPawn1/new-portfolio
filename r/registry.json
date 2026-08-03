@@ -278,15 +278,15 @@
           "type": "registry:file"
         },
         {
-          "path": "registry/admin-auth/app/admin/layout.tsx",
+          "path": "registry/admin-auth/app/(admin)/layout.tsx",
           "type": "registry:file"
         },
         {
-          "path": "registry/admin-auth/app/admin/page.tsx",
+          "path": "registry/admin-auth/app/(admin)/admin/page.tsx",
           "type": "registry:file"
         },
         {
-          "path": "registry/admin-auth/app/admin/AdminNav.tsx",
+          "path": "registry/admin-auth/app/(admin)/admin/AdminNav.tsx",
           "type": "registry:file"
         },
         {

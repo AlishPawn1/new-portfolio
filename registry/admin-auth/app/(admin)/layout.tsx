@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
-import AdminNav from "./AdminNav";
+import AdminNav from "./admin/AdminNav";
 
 export default async function AdminLayout({
   children,
