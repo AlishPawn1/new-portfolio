@@ -76,13 +76,48 @@ npm run dev
 
 Open `http://localhost:3000/admin` and sign in with `ADMIN_EMAIL` / `ADMIN_PASSWORD` (defaults seeded from `.env`).
 
-> **Note:** the current shadcn CLI installs a single registry *item* from a URL. The one-liner targets the built `r/admin-auth.json`. The `r/registry.json` catalog (used by `npx shadcn list` / `search`) contains both items. Regenerate the built item after editing `registry/admin-auth/` with `npm run build:registry`.
+> **Note:** the current shadcn CLI installs a single registry *item* from a URL. The one-liner targets the built `r/admin-auth.json`. The `r/registry.json` catalog (used by `npx shadcn list` / `search`) contains all items. Regenerate the built items after editing `registry/` with `npm run build:registry`.
+
+### Date Pickers (AD & BS)
+
+Four date pickers are available — pick the one you need, AD (Gregorian) and BS (Bikram Sambat / Nepali) install separately:
+
+| Component | Install command |
+|-----------|-----------------|
+| Date Picker (AD) | `npx shadcn@latest add https://www.alishpawn.com.np/r/date-picker.json -y -o` |
+| Date Range Picker (AD) | `npx shadcn@latest add https://www.alishpawn.com.np/r/date-range-picker.json -y -o` |
+| Date Picker (BS / Nepali) | `npx shadcn@latest add https://www.alishpawn.com.np/r/date-picker-bs.json -y -o` |
+| Date Range Picker (BS / Nepali) | `npx shadcn@latest add https://www.alishpawn.com.np/r/date-range-picker-bs.json -y -o` |
+
+Usage (AD):
+
+```tsx
+import { DatePicker } from "@/components/ui/date-picker";
+import { DateRangePicker } from "@/components/ui/date-range-picker";
+
+const [date, setDate] = useState(""); // 'YYYY-MM-DD'
+const [range, setRange] = useState({ from: "", to: "" });
+
+<DatePicker value={date} onChange={setDate} min="2024-01-01" />
+<DateRangePicker value={range} onChange={setRange} />
+```
+
+Usage (BS / Nepali): values are still AD `'YYYY-MM-DD'` strings, but the calendar renders in Bikram Sambat. The BS items automatically install `components/ui/select.tsx` and `lib/nepali.ts` and pull in `@remotemerge/nepali-date-converter`.
+
+```tsx
+import { DatePicker } from "@/components/ui/date-picker-bs";
+import { DateRangePicker } from "@/components/ui/date-range-picker-bs";
+
+<DatePicker value={date} onChange={setDate} />
+<DateRangePicker value={range} onChange={setRange} />
+```
 
 ### 📖 Documentation
 
 For detailed guides, examples, and customization options, visit:
 - **[Text Editor Guide](https://www.alishpawn.com.np/shadcn-text-editor-guide.html)** - Complete editor documentation
 - **[Admin Auth Guide](https://www.alishpawn.com.np/admin-auth-guide.html)** - NextAuth v5 + Prisma admin authentication setup
+- **[Date Pickers Guide](https://www.alishpawn.com.np/date-pickers-guide.html)** - AD & BS (Nepali) date pickers, install + props
 - **[Payment Integration Guide](https://www.alishpawn.com.np/payment-integration-guide.html)** - Stripe & Khalti setup
 
 ### Usage

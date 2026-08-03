@@ -306,6 +306,80 @@
           "type": "registry:file"
         }
       ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "Date Picker (AD)",
+      "description": "A single date picker (Gregorian/AD) with month navigation and a minimum date option.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/date-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "date-range-picker",
+      "type": "registry:ui",
+      "title": "Date Range Picker (AD)",
+      "description": "A date range picker (Gregorian/AD) with quick presets, two-month view, hover preview, and a minimum date option.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/date-range-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "date-picker-bs",
+      "type": "registry:ui",
+      "title": "Date Picker (BS / Nepali)",
+      "description": "A Nepali Bikram Sambat date picker (AD value in, BS calendar UI) with year/month selectors.",
+      "dependencies": [
+        "lucide-react",
+        "@remotemerge/nepali-date-converter"
+      ],
+      "files": [
+        {
+          "path": "registry/date-picker-bs.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/select.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/lib/nepali.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "date-range-picker-bs",
+      "type": "registry:ui",
+      "title": "Date Range Picker (BS / Nepali)",
+      "description": "A Nepali Bikram Sambat date range picker (AD values in, BS calendar UI) with quick presets and a two-month view.",
+      "dependencies": [
+        "lucide-react",
+        "@remotemerge/nepali-date-converter"
+      ],
+      "files": [
+        {
+          "path": "registry/date-range-picker-bs.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/lib/nepali.ts",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

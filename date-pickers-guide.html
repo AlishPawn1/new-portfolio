@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadcn Date Pickers - AD & BS Guide</title>
+    <link rel="icon" href="image/image.png" type="image/png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        pre code {
+            display: block;
+            padding: 1rem;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        .keyword { color: #569cd6; }
+        .string { color: #ce9178; }
+        .comment { color: #6a9955; }
+        .function { color: #dcdcaa; }
+        .component { color: #4ec9b0; }
+        .number { color: #b5cea8; }
+        .tag { color: #569cd6; }
+        .attr { color: #9cdcfe; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 0.5rem 0.75rem; text-align: left; border: 1px solid #334155; font-size: 0.875rem; }
+        th { background: #0f172a; color: #94a3b8; font-weight: 600; }
+        td { color: #cbd5e1; }
+        code { color: #6ee7b7; }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-100">
+    <div class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Header -->
+        <header class="mb-12">
+            <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-emerald-400 to-cyan-500 bg-clip-text text-transparent">
+                Shadcn Date Pickers (AD & BS)
+            </h1>
+            <p class="text-xl text-gray-400">
+                Single and range date pickers in both Gregorian (AD) and Nepali Bikram Sambat (BS) — installed separately with one command each
+            </p>
+        </header>
+
+        <!-- Quick Install -->
+        <section class="mb-12 p-6 bg-gray-900 rounded-xl border border-gray-800">
+            <h2 class="text-2xl font-semibold mb-4">⚡ Quick Install</h2>
+            <p class="text-sm text-gray-400 mb-4">Pick the ones you need — AD and BS install independently:</p>
+            <pre><code><span class="comment"># AD (Gregorian)</span>
+npx shadcn@latest add https://www.alishpawn.com.np/r/date-picker.json -y -o
+npx shadcn@latest add https://www.alishpawn.com.np/r/date-range-picker.json -y -o
+
+<span class="comment"># BS (Nepali / Bikram Sambat) — auto-installs lib/nepali.ts + components/ui/select.tsx</span>
+npx shadcn@latest add https://www.alishpawn.com.np/r/date-picker-bs.json -y -o
+npx shadcn@latest add https://www.alishpawn.com.np/r/date-range-picker-bs.json -y -o</code></pre>
+        </section>
+
+        <!-- Features -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">✨ Features</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">🗓️ Single Date Picker (AD)</h3>
+                    <p class="text-gray-400 text-sm">Month navigation, today highlight, clear button, <code>min</code> date support</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">📅 Date Range Picker (AD)</h3>
+                    <p class="text-gray-400 text-sm">Quick presets, two-month view, hover range preview, <code>min</code> date support</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">🇳🇵 Single Date Picker (BS)</h3>
+                    <p class="text-gray-400 text-sm">Nepali Bikram Sambat calendar with Baishakh–Chaitra month names, year/month selectors</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">🇳🇵 Date Range Picker (BS)</h3>
+                    <p class="text-gray-400 text-sm">BS calendar with quick presets, two-month view and shift-by-day buttons</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">🔁 AD in, BS display</h3>
+                    <p class="text-gray-400 text-sm">Values stay AD <code>'YYYY-MM-DD'</code>; the calendar renders in BS via <code>@remotemerge/nepali-date-converter</code></p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">🧱 Zero shadcn deps</h3>
+                    <p class="text-gray-400 text-sm">Only <code>lucide-react</code> + <code>cn</code> from <code>@/lib/utils</code>. Works in any shadcn/Tailwind project</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Usage -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">🛠️ Usage</h2>
+
+            <h3 class="text-xl font-semibold mb-3">AD pickers</h3>
+            <pre><code><span class="keyword">import</span> { <span class="component">DatePicker</span> } <span class="keyword">from</span> <span class="string">"@/components/ui/date-picker"</span>;
+<span class="keyword">import</span> { <span class="component">DateRangePicker</span> } <span class="keyword">from</span> <span class="string">"@/components/ui/date-range-picker"</span>;
+
+<span class="keyword">const</span> [date, setDate] = useState(<span class="string">""</span>); <span class="comment">// 'YYYY-MM-DD'</span>
+<span class="keyword">const</span> [range, setRange] = useState({ from: <span class="string">""</span>, to: <span class="string">""</span> });
+
+&lt;<span class="tag">DatePicker</span> value={date} onChange={setDate} min=<span class="string">"2024-01-01"</span> /&gt;
+&lt;<span class="tag">DateRangePicker</span> value={range} onChange={setRange} /&gt;</code></pre>
+
+            <h3 class="text-xl font-semibold mb-3 mt-8">BS (Nepali) pickers</h3>
+            <pre><code><span class="keyword">import</span> { <span class="component">DatePicker</span> } <span class="keyword">from</span> <span class="string">"@/components/ui/date-picker-bs"</span>;
+<span class="keyword">import</span> { <span class="component">DateRangePicker</span> } <span class="keyword">from</span> <span class="string">"@/components/ui/date-range-picker-bs"</span>;
+
+<span class="comment">// Values are still AD 'YYYY-MM-DD' strings; the calendar renders in BS</span>
+&lt;<span class="tag">DatePicker</span> value={date} onChange={setDate} /&gt;
+&lt;<span class="tag">DateRangePicker</span> value={range} onChange={setRange} /&gt;</code></pre>
+        </section>
+
+        <!-- Props -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">📦 Props</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Prop</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>value</code></td><td><code>string</code></td><td>—</td><td>AD date as <code>'YYYY-MM-DD'</code> (or <code>{ from, to }</code> for range)</td></tr>
+                    <tr><td><code>onChange</code></td><td><code>(v: string) =&gt; void</code></td><td>—</td><td>Called with the new value; <code>''</code> clears the picker</td></tr>
+                    <tr><td><code>placeholder</code></td><td><code>string</code></td><td><code>'Select date'</code> / <code>'Select date range'</code></td><td>Shown when empty</td></tr>
+                    <tr><td><code>min</code></td><td><code>string</code></td><td>—</td><td>Earliest selectable date (<code>'YYYY-MM-DD'</code>); AD pickers only</td></tr>
+                    <tr><td><code>id</code></td><td><code>string</code></td><td>—</td><td>Passed to the trigger button</td></tr>
+                    <tr><td><code>className</code></td><td><code>string</code></td><td>—</td><td>Extra classes on the wrapper</td></tr>
+                    <tr><td><code>name</code> / <code>required</code></td><td><code>string</code> / <code>boolean</code></td><td>—</td><td>Hidden form input (BS single picker only)</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- What gets installed -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">📁 What gets installed</h2>
+            <pre><code><span class="comment"># AD</span>
+components/ui/date-picker.tsx
+components/ui/date-range-picker.tsx
+
+<span class="comment"># BS (each installs its dependencies automatically)</span>
+components/ui/date-picker-bs.tsx
+components/ui/date-range-picker-bs.tsx
+components/ui/select.tsx       <span class="comment"># shared by date-picker-bs</span>
+lib/nepali.ts                  <span class="comment"># AD ⇄ BS converter helpers</span></code></pre>
+            <p class="mt-4 text-sm text-gray-400">
+                Dependencies installed: <code class="text-emerald-400">lucide-react</code> and, for the BS items,
+                <code class="text-emerald-400">@remotemerge/nepali-date-converter</code>.
+            </p>
+        </section>
+
+        <!-- Customization -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">🎛️ Customization</h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">Accent color</h3>
+                    <p class="text-gray-400 text-sm">AD pickers use <code class="text-emerald-400">bg-zinc-900</code>; BS pickers use <code class="text-emerald-400">bg-emerald-600</code>. Swap the class on the selected-day buttons.</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">Week starts on Monday</h3>
+                    <p class="text-gray-400 text-sm">AD range picker already uses Monday-start. AD single picker starts Sunday — adjust <code class="text-emerald-400">startOffset</code> and <code class="text-emerald-400">WEEKDAYS</code>.</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">Locale / formatting</h3>
+                    <p class="text-gray-400 text-sm">AD display uses <code class="text-emerald-400">toLocaleDateString("en-US", ...)</code>. Change the locale string to format for other regions.</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">Range presets</h3>
+                    <p class="text-gray-400 text-sm">Edit <code class="text-emerald-400">buildPresets()</code> to add/remove Today, This week, Last month, This year, etc.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Troubleshooting -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-6">🐛 Troubleshooting</h2>
+            <div class="space-y-4">
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">🔌 cn() not found</h3>
+                    <p class="text-gray-400 text-sm">Both pickers import <code class="text-emerald-400">cn</code> from <code class="text-emerald-400">@/lib/utils</code>. shadcn init creates it; otherwise add a <code class="text-emerald-400">lib/utils.ts</code> exporting <code class="text-emerald-400">cn</code> (clsx + tailwind-merge) and the <code class="text-emerald-400">@/*</code> tsconfig alias.</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">🐘 @remotemerge/nepali-date-converter missing</h3>
+                    <p class="text-gray-400 text-sm">Re-run the install with <code class="text-emerald-400">-y -o</code>, or <code class="text-emerald-400">npm install @remotemerge/nepali-date-converter</code> manually.</p>
+                </div>
+                <div class="p-4 bg-gray-900 rounded-lg border border-gray-800">
+                    <h3 class="font-semibold mb-2">📉 Dropdown clipped by overflow</h3>
+                    <p class="text-gray-400 text-sm">The calendar is <code class="text-emerald-400">position: fixed</code> and viewport-clamped, so it escapes most containers. Avoid wrapping it in a parent with <code class="text-emerald-400">overflow: hidden</code> + <code class="text-emerald-400">transform</code> (that makes fixed position relative).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-16 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+            <p>
+                Part of the shadcn registry · <a href="https://ui.shadcn.com/docs/registry" class="text-emerald-400 hover:underline">Registry docs</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

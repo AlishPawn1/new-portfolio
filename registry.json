@@ -112,6 +112,59 @@
         "registry/admin-auth/prisma/seed.ts",
         "registry/admin-auth/prisma.config.ts"
       ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "Date Picker (AD)",
+      "description": "A single date picker (Gregorian/AD) with month navigation and a minimum date option.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        "registry/date-picker.tsx"
+      ]
+    },
+    {
+      "name": "date-range-picker",
+      "type": "registry:ui",
+      "title": "Date Range Picker (AD)",
+      "description": "A date range picker (Gregorian/AD) with quick presets, two-month view, hover preview, and a minimum date option.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "files": [
+        "registry/date-range-picker.tsx"
+      ]
+    },
+    {
+      "name": "date-picker-bs",
+      "type": "registry:ui",
+      "title": "Date Picker (BS / Nepali)",
+      "description": "A Nepali Bikram Sambat date picker (AD value in, BS calendar UI) with year/month selectors.",
+      "dependencies": [
+        "lucide-react",
+        "@remotemerge/nepali-date-converter"
+      ],
+      "files": [
+        "registry/date-picker-bs.tsx",
+        "registry/select.tsx",
+        "registry/lib/nepali.ts"
+      ]
+    },
+    {
+      "name": "date-range-picker-bs",
+      "type": "registry:ui",
+      "title": "Date Range Picker (BS / Nepali)",
+      "description": "A Nepali Bikram Sambat date range picker (AD values in, BS calendar UI) with quick presets and a two-month view.",
+      "dependencies": [
+        "lucide-react",
+        "@remotemerge/nepali-date-converter"
+      ],
+      "files": [
+        "registry/date-range-picker-bs.tsx",
+        "registry/lib/nepali.ts"
+      ]
     }
   ]
 }

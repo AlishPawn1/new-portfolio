@@ -141,3 +141,170 @@ writeFileSync(sourceCatalogPath, JSON.stringify(sourceCatalog, null, 2) + "\n");
 console.log(
   `Wrote r/admin-auth.json (${item.files.length} files) and merged admin-auth into r/registry.json + registry.json`
 );
+
+// ---------------------------------------------------------------------------
+// Date picker registry items (AD + BS variants, installable separately)
+// ---------------------------------------------------------------------------
+const uiItemDefs = [
+  {
+    name: "date-picker",
+    title: "Date Picker (AD)",
+    description:
+      "A single date picker (Gregorian/AD) with month navigation and a minimum date option.",
+    dependencies: ["lucide-react"],
+    files: [["registry/date-picker.tsx", "~/components/ui/date-picker.tsx"]],
+    docs: `Usage:
+
+\`\`\`tsx
+import { DatePicker } from "@/components/ui/date-picker";
+
+const [date, setDate] = useState(""); // 'YYYY-MM-DD'
+
+<DatePicker value={date} onChange={setDate} min="2024-01-01" />
+\`\`\`
+
+Props: value (string, 'YYYY-MM-DD'), onChange, placeholder, min ('YYYY-MM-DD' disables earlier dates), id, className.`,
+  },
+  {
+    name: "date-range-picker",
+    title: "Date Range Picker (AD)",
+    description:
+      "A date range picker (Gregorian/AD) with quick presets, two-month view, hover preview, and a minimum date option.",
+    dependencies: ["lucide-react"],
+    files: [
+      [
+        "registry/date-range-picker.tsx",
+        "~/components/ui/date-range-picker.tsx",
+      ],
+    ],
+    docs: `Usage:
+
+\`\`\`tsx
+import { DateRangePicker } from "@/components/ui/date-range-picker";
+
+const [range, setRange] = useState({ from: "", to: "" });
+
+<DateRangePicker value={range} onChange={setRange} min="2024-01-01" />
+\`\`\`
+
+Props: value ({ from, to } as 'YYYY-MM-DD'), onChange, placeholder, min ('YYYY-MM-DD'), id, className.`,
+  },
+  {
+    name: "date-picker-bs",
+    title: "Date Picker (BS / Nepali)",
+    description:
+      "A Nepali Bikram Sambat date picker (AD value in, BS calendar UI) with year/month selectors.",
+    dependencies: ["lucide-react", "@remotemerge/nepali-date-converter"],
+    files: [
+      ["registry/date-picker-bs.tsx", "~/components/ui/date-picker-bs.tsx"],
+      ["registry/select.tsx", "~/components/ui/select.tsx"],
+      ["registry/lib/nepali.ts", "~/lib/nepali.ts"],
+    ],
+    docs: `Usage:
+
+\`\`\`tsx
+import { DatePicker } from "@/components/ui/date-picker-bs";
+
+const [date, setDate] = useState(""); // AD 'YYYY-MM-DD'
+
+<DatePicker value={date} onChange={setDate} />
+\`\`\`
+
+The value stays an AD 'YYYY-MM-DD' string; the calendar renders in Bikram Sambat.
+Also installs components/ui/select.tsx and lib/nepali.ts automatically.`,
+  },
+  {
+    name: "date-range-picker-bs",
+    title: "Date Range Picker (BS / Nepali)",
+    description:
+      "A Nepali Bikram Sambat date range picker (AD values in, BS calendar UI) with quick presets and a two-month view.",
+    dependencies: ["lucide-react", "@remotemerge/nepali-date-converter"],
+    files: [
+      [
+        "registry/date-range-picker-bs.tsx",
+        "~/components/ui/date-range-picker-bs.tsx",
+      ],
+      ["registry/lib/nepali.ts", "~/lib/nepali.ts"],
+    ],
+    docs: `Usage:
+
+\`\`\`tsx
+import { DateRangePicker } from "@/components/ui/date-range-picker-bs";
+
+const [range, setRange] = useState({ from: "", to: "" });
+
+<DateRangePicker value={range} onChange={setRange} />
+\`\`\`
+
+Values stay AD 'YYYY-MM-DD' strings; the calendar renders in Bikram Sambat.
+Also installs lib/nepali.ts automatically.`,
+  },
+];
+
+function mergeCatalogItem(catalogPath, def, catalogItem) {
+  const catalog = JSON.parse(readFileSync(catalogPath, "utf-8"));
+  catalog.items = [
+    ...catalog.items.filter((i) => i.name !== def.name),
+    catalogItem,
+  ];
+  catalog.homepage = homepage;
+  writeFileSync(catalogPath, JSON.stringify(catalog, null, 2) + "\n");
+}
+
+for (const def of uiItemDefs) {
+  const builtFiles = def.files.map(([srcPath, target]) => ({
+    path: target.replace("~/", ""),
+    type: "registry:ui",
+    target,
+    content: readFileSync(join(root, srcPath), "utf-8"),
+  }));
+
+  const item = {
+    $schema: "https://ui.shadcn.com/schema/registry-item.json",
+    name: def.name,
+    type: "registry:ui",
+    title: def.title,
+    description: def.description,
+    dependencies: def.dependencies,
+    files: builtFiles,
+    docs: def.docs,
+  };
+
+  writeFileSync(
+    join(outDir, `${def.name}.json`),
+    JSON.stringify(item, null, 2) + "\n"
+  );
+
+  mergeCatalogItem(
+    join(outDir, "registry.json"),
+    def,
+    {
+      name: def.name,
+      type: "registry:ui",
+      title: def.title,
+      description: def.description,
+      dependencies: def.dependencies,
+      files: def.files.map(([srcPath]) => ({
+        path: srcPath,
+        type: "registry:ui",
+      })),
+    }
+  );
+
+  mergeCatalogItem(
+    join(root, "registry.json"),
+    def,
+    {
+      name: def.name,
+      type: "registry:ui",
+      title: def.title,
+      description: def.description,
+      dependencies: def.dependencies,
+      files: def.files.map(([srcPath]) => srcPath),
+    }
+  );
+}
+
+console.log(
+  `Wrote r/date-picker.json, r/date-range-picker.json, r/date-picker-bs.json, r/date-range-picker-bs.json and merged them into r/registry.json + registry.json`
+);
